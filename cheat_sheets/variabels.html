@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varibales Cheat sheet</title>
+</head>
+<body>
+    <p id="nameprint"> </p>
+    <p id="nameprint_templit"></p>
+    <p id="calculation">0</p>
+
+    <script>
+        //Vår første java script kommentar. Og under vår aller første variabel:
+        const firstname = "Julie"
+        //Skriver ut firstname til konsollen
+        console.log(firstname)
+        //Skriver ut firstname til html med konkatinering 
+        document.getElementById("nameprint").innerHTML = "Hei " + firstname
+        //document gjør at javascript søker gjennom hele html dokumentet. innerHTML= åpen hjertekirugi 
+
+        //Skriver ut firstname til HTML med template literal
+        document.getElementById("nameprint_templit").innerHTML = `Hei ${firstname}. Går det bra med deg?`
+
+
+        //Skrive ut et enkelt mattestykke
+        document.getElementById("calculation").innerHTML = 1 + 3
+    
+    </script>
+</body>
+</html>
