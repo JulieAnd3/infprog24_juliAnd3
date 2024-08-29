@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Errors</title>
+</head>
+<body>
+    <p id="medling"></p>
+
+    <script> 
+    //Feil 1: script manglet avsluttende tag: <script
+    const user_name = "Julie" 
+    //Feil 2: Navnet manglet knotter på begge sider: "Julie"
+    const user_birthyear = 1983 
+    //Feil 3: const var skrevet feil: constt
+
+    const age = 2022 - user_birthyear 
+    //Feil 4: Var et mellomrom i ntagen til user_birthyear: user=birthyear
+
+    document.getElementById("medling").innerHTML = user_name
+    //Feil 5: utskrift er ikke en definert variabel
+    </script>
+</body>
+</html>
