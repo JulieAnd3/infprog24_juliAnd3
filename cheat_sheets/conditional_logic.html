@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditinal logic - betigent logikk</title>
+</head>
+<body>
+    <h2>Er du gammel nok til å kjøre bil?</h2>
+    <p id="carmessage"></p>
+
+    <script>
+        const age = 8
+        const passed = true
+        // Er oppkjrøing bestått eller ikke bestått
+        //if-test for å sjekke om vi er gammle nok:
+        if(age >= 18 && passed === true){ 
+            //Personen er lik 18 eller eldre enn 18. 
+            document.getElementById("carmessage").innerHTML = "Ja"
+        } else { //Hvis personen er under 18 vil denne meldingen komme opp
+            document.getElementById("carmessage").innerHTML = "Nei"
+        } 
+        
+    </script>
+</body>
+</html>
