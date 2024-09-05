@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Øvingsoppgave 1 betinget logikk</title>
+</head>
+<body>
+    <p id="utskrift"></p>
+    
+    <script>
+        const name = "Julia"
+        let utskrift  
+
+        if(name === "Julie"){ 
+            utskrift = `Mitt navn er ${name} Andersen`
+        }else{
+            utskrift = `Mitt navn er ikke ${name} Andersen`
+        }
+        //Slett med at jeg prøvde å lage en ny vaiabel når jeg gjenomførte if-testen. skrev: let utskrift når det bare skulle stått utskrift
+        document.getElementById("utskrift").innerHTML = utskrift
+    </script>
+</body>
+</html>
