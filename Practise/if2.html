@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Øvingsoppgave 2 betinget logikk</title>
+</head>
+<body>
+    <p id="utskrift"></p>
+
+    <script>
+        const age = 79
+        let utskrift 
+
+        if(age < 18){
+            utskrift = "Du er ikke myndig"
+            //Skrev => som gjorde at koden ble feil og => ble tolket som en variabel 
+        } else if(age >= 18 && age <= 62){
+            utskrift = "Du er klar for studie- og arbeidslivet"
+        } else{
+            utskrift = "Du er klar for å bli pensjonist"
+        }
+        document.getElementById("utskrift").innerHTML = utskrift
+    </script>
+</body>
+</html>
