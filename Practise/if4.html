@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Øvingsoppgaver betinget logikk</title>
+</head>
+<body>
+    <p id="utskrift"></p>
+
+    <script>
+        const ITF19019_grade = "A"
+        const ITF10511_grade = "F"
+        let utskrift 
+
+        const ITF19019_passed = ITF19019_grade === "A" ? true : false 
+        const ITF10511_passed = ITF10511_grade === "A" ? true : false 
+
+        let countPassed = 0
+
+        if(ITF19019_passed === true){
+            countPassed = countPassed + 1
+        }else{
+            countPassed = countPassed + 0
+        }
+
+        if(ITF10511_passed === true){
+            countPassed = countPassed + 1
+        }else{
+            countPassed = countPassed + 0
+        }
+
+        
+        document.getElementById("utskrift").innerHTML = `Du har bestått ${countPassed} av 2 kurs`
+
+    </script>
+</body>
+</html>
