@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Øvingsoppgave 3</title>
+</head>
+<body>
+    <h2>Antall gutter og jenter:</h2>
+    <p><span id="antall_gutter">X</span> antall gutter og <span id="antall_jenter">X</span> antall jenter</p>
+    <script>
+        const barn1 = "jente"
+        const barn2 = "gutt"
+        const barn3 = "jente"
+
+        let antall_gutter = 0
+        let antall_jenter = 0
+
+        if(barn1 === "jente"){
+            antall_jenter = antall_jenter + 1
+        }
+        else{
+            antall_gutter = antall_gutter + 1
+        }
+
+        if(barn2 === "jente"){
+            antall_jenter = antall_jenter + 1
+        }
+        else{
+            antall_gutter = antall_gutter + 1
+        }
+
+        if(barn3 === "jente"){
+            antall_jenter = antall_jenter + 1
+        }
+        else{
+            antall_gutter = antall_gutter + 1
+        }
+
+        //Finnes det en måte å slippe å skrive samme kode 3 ganger?
+        document.getElementById("antall_gutter").innerHTML = antall_gutter
+        document.getElementById("antall_jenter").innerHTML = antall_jenter
+
+    </script>
+</body>
+</html>
