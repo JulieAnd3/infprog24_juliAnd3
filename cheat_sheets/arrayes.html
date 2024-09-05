@@ -14,14 +14,36 @@
     <script>
         //Opprette en array med filmtitler
         const moviearray = ["Interstellar", "Top gun", "Titanic", "Dum og dummere", "Cool runnings", "Pokemon", "Ikke krøll med Zohan"]
+        //Å legge til et element på slutten av en array 
+        moviearray.push("The Exorcist")
+        //Å slette en film med en bestemt index
+        moviearray.splice(3, 1)
+        //Sjekke etter et bestemt element i arrayen 
+        const movieexists = moviearray.includes("Dum og dummere")
+        console.log("Finnes Titanic? " + movieexists)
+
+        //Sortere en array fra A-Å
+        moviearray.sort()
+
+        //Sortere en array fra Å-A
+        moviearray.reverse()
+        
+        //Array med tall
+        const numbersarray = [4, 78, 6, 90, 123, 5, 74]
+        //Sortere array med tall. laveste tall først:
+        numbersarray.sort(function(a, b) {return a - b})
+        //Hvis vi ønsker med høyeste tall først, la funskjonen returnere b-a
+
         //Skriv ut film med index tre:
         const index = 3
         document.getElementById("movietitle").innerHTML = moviearray[index]
         //Skriv ut antall filmer:
         document.getElementById("moviecount").innerHTML = moviearray.length
-
         //Vis moviearray i konsoll:
         console.log(moviearray)
+
+        //Vis numberarray i konsoll:
+        console.log(numbersarray)
     </script>
 </body>
 </html>
