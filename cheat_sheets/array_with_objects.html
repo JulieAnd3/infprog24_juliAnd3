@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects with arrays cheat sheets</title>
+</head>
+<body>
+    <ul id="profiles"></ul>
+    <script>
+        const lecturers = [ //Vi gjør objektet til en array med []
+            {
+                personname: "Marius Akerbæk",
+                office: "D1-016",
+                email: "toremake@hiof.no",
+                birthyear: 1983,
+                courses: ["Innføring i programmering", "Kommunikasjonsdesign", "UI designprosjekt", "utvikling av interaktive nettsteder"]
+        
+            }, //Husk å separrere objekter med komma ,
+            {
+                personname: "Ann-Charlott Karlsen",
+                office: "D1_062",
+                email: "ackarlse@hiof.no",
+                birthyear: "1992",
+                courses: ["Webutvikling", "Utvikling av interaktive nettsteder"]
+            },
+            {
+                personname: "Ole Edvard Ørbæk",
+                office: "D1-061AA",
+                email: "olevo@hiof.no",
+                birthyear: 1993,
+                courses: ["Innføring i datasikkerhet"]
+            },
+            {
+                personname: "Daniela Blauhut",
+                office: "D1-015",
+                email: "danielb@hiof.no",
+                birthyear: 1977,
+                courses: ["Designmetoder", "UI Designprosjekt"]
+            }
+            
+        ]
+
+        //document.getElementById("contactinfo").innerHTML = `${lecturers[0].personname} sitter på kontor ${lecturers[0].office}. Epost: ${lecturers[0].email}. Favorritt kurset hans er ${lecturers[0].courses[0]}`
+
+        console.log(lecturers)
+    </script>
+</body>
+</html>

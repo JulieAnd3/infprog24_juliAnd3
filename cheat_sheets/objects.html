@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects cheat sheets</title>
+</head>
+<body>
+    <p id="contactinfo"></p>
+    
+    <script>
+        const lecturer = {
+            personname: "Marius Akerbæk",
+            office: "D1-016",
+            email: "toremake@hiof.no",
+            birthyear: 1983,
+             //Lage en nøkkel med et variabel-navn og : for å skille mellom nøkkler bruk ,
+            courses: ["Innføring i programmering", "Kommunikasjonsdesign", "UI designprosjekt", "utvikling av interaktive nettsteder"]
+           //Kan også legge en liste inne i et object
+        }
+
+        
+
+        document.getElementById("contactinfo").innerHTML = `${lecturer.personname} sitter på kontor ${lecturer.office}. 
+        Epost: ${lecturer.email}. Favorritt kurset hans er ${lecturer.courses[0]}`
+        //Først må vise til objektet så gå et hakk videre ved å bruke punktum som vist i koden over.
+        //For å hente noe i en list må man skrive index tallet i brackets. 
+        console.log(lecturer)
+    </script>
+</body>
+</html>
