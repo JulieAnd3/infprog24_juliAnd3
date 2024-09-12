@@ -47,7 +47,17 @@
             Når vi .mapper må vi mellomlagre element i en variabel: lecturer
             For hver lecturer, må vi legge til en <li> i <ul id="profiles">
         */
-        lecturers.map(lecturer => document.getElementById("profiles").innerHTML += `<li>${lecturer.personname}
+
+    
+        /*
+            Før vi skriver ut arrayen skal vi filtrere vekk forelsere født før 1990. Vi må gå gjennom hele 
+            med et filter. 
+            Når vi kjører .filter må vi mellomlagre element i en variabel.
+            For hver lecture må vi gjøre en sammenligning (akkurat som en if-betingelse).                
+            I dette tilfellet; er birthyear større eller lik 1990, skal forelseren inkluderes.
+            Etter vi har filtrert skal vi skrive ut de gjenværende forelerene.
+        */
+        lecturers.filter(lecturer => lecturer.birthyear >= 1990).map(lecturer => document.getElementById("profiles").innerHTML += `<li>${lecturer.personname}
             <ul>
                 ${lecturer.courses.map(course => `<li>${course}</li>`).join("")}
             </ul>
