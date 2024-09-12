@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamer filter</title>
+</head>
+<body>
+    <h2>iOS games:</h2>
+    <ul id="filter"></ul>
+
+    <script>
+        const games = [
+            {
+                title: "Angry Birds",
+                platforms: ["iOS","Android"]
+            },
+            {
+                title: "Nongram",
+                platforms: ["Android"]
+            },
+            {
+                title: "Plants vs Zombies",
+                platforms: ["iOS","Android", "Windows", "MacOS"]
+            },
+            {
+                title: "Punball",
+                platforms: ["Android", "Windows"]
+            },
+            {
+                title: "Planet Zoo",
+                platforms: ["Windows", "MacOS"]
+            },
+            {
+                title: "Woordle",
+                platforms: ["iOS","MacOS"]
+            },
+        ]
+        const iOSgames = games.filter(game => game.platforms.includes("iOS")) 
+            /*Filtrer først arrayen games. hvor midlertidig variabel er game. 
+            Så skrive man sti til platforms variablen og bruker includes for å få programmet til å se etter "iOS"
+            */
+
+
+            
+
+            /*Funker ikke: Gir undefind i HTML
+            let utskrift = ""
+            iOSgames.map(iOSgame => utskrift += `<li>${games.platforms}</li>`)    
+            document.getElementById("filter").innerHTML = utskrift
+            */
+            /* Funker ikke: Gir undefind i HTML:
+            iOSgames.map(iOSgame => document.getElementById("filter").innerHTML += `<li>${games.title}</li>`).join()
+            */
+            //Forsøk som ikke funket: games.platforms.filter(platform => games.platform == "iOS").map(game => getElementById("filter").innerHTML += `<li>Spill: ${games}</li>`)
+        console.log(games)
+        console.log(iOSgames)
+    </script>
+</body>
+</html>
