@@ -213,8 +213,7 @@
                     //Når brikken er plassert på spillerbrettet, må vi sjekke om den - og brikkene rundt - 
                     //utgjør en vinnerkombinasjon. Denne funksjonaliteten ligger i funksjonen sjekkVinner(),
                     //siden dette er et litt større sett med handlinger og kan gi noen ulike utfall.
-                    sjekkVinner();
-
+                    sjekkVinner()
                 //Men, hvis cellen ikke er ledig...
                 } else {
                     //...skriver vi ut en beskjed til spilleren, og lar han velge en ny celle.
@@ -242,7 +241,6 @@
                 return;
             }
         }
-
         function sjekkVinner() {
             var rundenVunnet = false;
             //Vi må sjekke etter vinner for hver brikke som plasseres på brettet.
@@ -269,12 +267,13 @@
                     rundenVunnet = true;
                     break;
                 }
+                
             }
 
             //Hvis runden er vunnet, skal vi gjøre noen handlinger:
-            if(rundenVunnet === true) {
+                if(rundenVunnet === true) {
                 //Skriv ut hvilken spiller som har vunnet
-                document.getElementById("playerturn").innerHTML = "Spiller " + player + " har vunnet!";
+                document.getElementById("playerturn").innerHTML = "Spiller " + player + " har vunnet!"
                 //Gjør restart spill-knappen synlig
                 document.getElementById("newgame").style.display = "block";
                 //Sett spillstatus til false, slik at ingen spillere får plassere
@@ -282,6 +281,7 @@
                 spillStatus = false;
                 document.getElementById("playerturn").style.backgroundColor = "#FFD700" //Forandrer fargen til gull når en spiller vinner
             }
+
         }
 
         //Når et spill er avsluttet, og et nytt skal begynne, må vi gjøre klar en del ting:
