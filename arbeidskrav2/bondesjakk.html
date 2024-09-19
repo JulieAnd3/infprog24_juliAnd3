@@ -272,6 +272,7 @@
 
             //Hvis runden er vunnet, skal vi gjøre noen handlinger:
                 if(rundenVunnet === true) {
+                setTimeout(function(){
                 //Skriv ut hvilken spiller som har vunnet
                 document.getElementById("playerturn").innerHTML = "Spiller " + player + " har vunnet!"
                 //Gjør restart spill-knappen synlig
@@ -280,8 +281,8 @@
                 //flere brikker på brettet - dette løses med sjekken i funksjonen spill()
                 spillStatus = false;
                 document.getElementById("playerturn").style.backgroundColor = "#FFD700" //Forandrer fargen til gull når en spiller vinner
-                
-            }
+                },1000) 
+            } //gjør at spiller 2 vinner hver gang???????
 
         }
 
