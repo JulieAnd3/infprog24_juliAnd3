@@ -249,8 +249,8 @@
             for(var combination = 0; combination <= 7; combination++) {
                 var vinnerKomboPlass1 = winningCombos[combination][0]; //Henter ut plassering av vinnerkombinasjonens rad 1, eksempel winningCombos[0][0] første runde, som inneholder verdien 0.
                 var vinnerKomboPlass2 = winningCombos[combination][1];
-                var vinnerKomboPlass3 = winningCombos[combination][2]
-
+                var vinnerKomboPlass3 = winningCombos[combination][2];
+               
                 var brikke1 = spillerBrikker[vinnerKomboPlass1]; //Henter ut verdien (spillmerket) på indexen til første vinnerkombinasjonsplass fra spillerBrikker, eksempel spillerBrikker[0] første runde.
                 var brikke2 = spillerBrikker[vinnerKomboPlass2];
                 var brikke3 = spillerBrikker[vinnerKomboPlass3];
@@ -267,9 +267,7 @@
                     rundenVunnet = true;
                     break;
                 }
-                
             }
-
             //Hvis runden er vunnet, skal vi gjøre noen handlinger:
                 if(rundenVunnet === true) {
                 setTimeout(function(){
@@ -281,8 +279,12 @@
                 //flere brikker på brettet - dette løses med sjekken i funksjonen spill()
                 spillStatus = false;
                 document.getElementById("playerturn").style.backgroundColor = "#FFD700" //Forandrer fargen til gull når en spiller vinner
-                },1000) 
-            } //gjør at spiller 2 vinner hver gang???????
+                    //J: forandre fargen på de cellene som har vunnet
+                document.getElementById("celle" + vinnerKomboPlass1).style.color = "#FFD700"
+                document.getElementById("celle" + vinnerKomboPlass2).style.color = "#FFD700"
+                document.getElementById("celle" + vinnerKomboPlass3).style.color = "#FFD700"
+            }, 1000)
+            } 
 
         }
 
@@ -298,6 +300,7 @@
             var celleteller = 0;
             while (celleteller < 9) {
                 document.getElementById("celle" + celleteller).innerHTML = "";
+                document.getElementById("celle" + celleteller).style.color = "" //J:Må også resete fargen på cellene
                 celleteller++;
             }
             // 2)
