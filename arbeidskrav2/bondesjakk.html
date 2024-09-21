@@ -93,7 +93,7 @@
         <div id="celle8" class="celle"></div>
     </section>
     <button id="newgame" onclick="restartGame()">Start spill på nytt</button>
-    <section id="telleboks">Antall spill: X</section>
+    <section id="telleboks">Antall spill: 1</section>
 
     <script>
         /* For å forstå hvorfor vi har celle-IDene 0 - 8 i HTML-koden over:
@@ -303,7 +303,7 @@
         // 3) Sette turen til spiller en og spillersymbolet til X
         // 4) Fjerne melding om vinner eller uavgjort, og oppdatere med spillers tur-tekst
         //Dette samler vi i en funksjon, slik at vi kan kalle funksjonen og utføre alle disse tingene når vi trenger det:
-        let rundeteller = 1 //variablen som telles
+        let rundeteller = 1
         function restartGame() {
             // 1)
             spillerBrikker = ["","","","","","","","",""];
@@ -321,11 +321,10 @@
             // 4)
             document.getElementById("playerturn").innerHTML = 'Spiller <span id="player">1</span> (<span id="playermark">X</span>) sin tur:';
             document.getElementById("playerturn").style.backgroundColor = "" //J: Resetter også fargen når spillet starter på nytt
-
-        }
-        document.getElementById("telleboks").innerHTML = `Antall spill: ${rundeteller}` 
-        //J: printe ut til telleboksen 
-        
+            //J:Teller runder og skriver det ut til telleboksen
+            rundeteller + rundeteller;
+            document.getElementById("telleboks").innerHTML = `Antall spill: ${rundeteller++}`
+        }     
     </script>
 </body>
 
