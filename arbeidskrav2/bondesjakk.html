@@ -347,7 +347,6 @@
         // 3) Sette turen til spiller en og spillersymbolet til X
         // 4) Fjerne melding om vinner eller uavgjort, og oppdatere med spillers tur-tekst
         //Dette samler vi i en funksjon, slik at vi kan kalle funksjonen og utføre alle disse tingene når vi trenger det:
-        let rundeteller = 1
         function restartGame() {
             // 1)
             spillerBrikker = ["","","","","","","","","","","","","","","",""]; //Lagt til så det blir 16 her også
@@ -366,8 +365,8 @@
             document.getElementById("playerturn").innerHTML = 'Spiller <span id="player">1</span> (<span id="playermark">X</span>) sin tur:';
             document.getElementById("playerturn").style.backgroundColor = "" //J: Resetter også fargen når spillet starter på nytt
             //J:Teller runder og skriver det ut til telleboksen
-            rundeteller + rundeteller;
-            document.getElementById("telleboks").innerHTML = `Antall spill: ${rundeteller++}`
+            antallSpill++;
+            document.getElementById("telleboks").innerHTML = `Antall spill: ${antallSpill}`
         }     
     </script>
 </body>
