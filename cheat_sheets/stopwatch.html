@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+
+    <style>
+        body {
+            background: #eee; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;
+            text-align: center;
+        }
+        #sec {
+            font-size: 200 px; 
+            font-family: georgia, serif; 
+            margin: 0;
+        }
+        button {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+ <main>
+    <p id="sec">0</p>
+    <p>Sekunder</p>
+    <button id="start">Start (S)</button>
+    <button id="stop" disabled>Stop (E)</button> 
+ </main>
+
+    <script>
+        //Variabler som referer til HTML-elementene 
+        const btnStart = document.getElementById("start")
+        const btnStop = document.getElementById("stop")
+        const secPrint = document.getElementById("sec")
+
+        //Konfigurasjon:
+        let seconds = 0
+        let status = false
+
+        function counter() {
+            if(status === true){ //vil bare telle når status === true som gjør at vi også kan stoppe den ved å forandre status
+                seconds++
+                secPrint.innerHTML = seconds 
+                setTimeout(counter, 1000)
+            }
+        }
+
+        function start() {
+            status = true 
+            btnStart.disabled = true //gjør at man ikke kan trykke på knappen mens koden teller
+            btnStop.disabled = false
+            counter()
+        }
+        function stop() {
+            status = false 
+            btnStart.disabled = false //gjør at start knappen kan brukes igjen når man stopper telleren 
+            btnStop.disabled = true 
+        }
+
+        btnStart.addEventListener("click", start) 
+        /*kaller funksjonen start direkte i steden for å først gi en navnløs 
+        funskjon så kalle start funskjonen etter det*/
+
+        btnStop.addEventListener("click", stop())
+
+        document.addEventListener("keydown", function(event) {
+            if(event.key === "s"){ //Her kan vi ikke forkorte for start skal bare begynne hvis tasten er trykket ned
+                start()
+            }
+            if(event.key === "e") {
+                stop()
+            }
+        })
+    </script>
+</body>
+</html>
