@@ -95,16 +95,39 @@
             loops: 4,
             functions: 7,
         }
-        document.getElementById("note-variables").innerHTML = notebook.varibales
-        document.getElementById("note-arrays").innerHTML = notebook.arrays
-        document.getElementById("note-loops").innerHTML = notebook.loops
-        document.getElementById("note-functions").innerHTML = notebook.functions
+        
 
-        if(gameConfig.player === ""){
+        //(BONUS) TODO: function for all prints
+        function updateStaticUI() {
+            //TODO: print playerinfo to HTML
+            if(gameConfig.player === ""){
             document.getElementById("playerName").innerHTML = "Waiting for player"
-        }else{
+            } else{
             document.getElementById("playerName").innerHTML = gameConfig.player
+            }
+
+            document.getElementById("energy").innerHTML = gameConfig.energy
+            document.getElementById("points").innerHTML = gameConfig.points
+            document.getElementById("duration").innerHTML = gameConfig.duration
+
+            //TODO: print notebook info to HTML
+            document.getElementById("variables").innerHTML = notebook.variables
+            document.getElementById("loops").innerHTML = notebook.loops
+            document.getElementById("functions").innerHTML = notebook.functions
+            document.getElementById("arrays").innerHTML = notebook.arrays
         }
+
+        function updateSingleStaticUI(elementId, value){
+            const element = document.getElementById(elementId)
+            if(element) {
+                element.innerHTML = value
+            } else {
+                console.error(`Element med id ${elementId} ble ikke funnet`)
+            }
+        }
+
+        gameConfig.energy = "1200"
+        updateSingleStaticUI("energy", gameConfig.energy)
 
         //notebookToggler og infoToggler er knappene som skal skjule/vise notatblokk og informasjonsskjerm.
         const notebookElement = document.getElementById("notebook-page")
