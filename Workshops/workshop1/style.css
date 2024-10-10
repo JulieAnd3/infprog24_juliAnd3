@@ -125,7 +125,6 @@ canvas {
 
 /* INFOSCREEN */
 #info {
-    display: none;
     background: rgba(0,0,0,.5);
     z-index: 99;
     width: 100%;
@@ -143,6 +142,10 @@ canvas {
     top: 1rem;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.hidden { /*Husk at det er . for refere til en class. Den vil jo ikke forsvinne!*/
+    display: none;
 }
 
 /* DEFAULT CLASSES */
@@ -167,3 +170,4 @@ canvas {
     width: 32px;
     height: auto;
 }
+
