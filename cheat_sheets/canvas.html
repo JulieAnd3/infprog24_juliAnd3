@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas cheat cheet</title>
+    <style>
+        body {
+            background-color: #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas {
+            background:#fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="drawingarea"></canvas>
+
+    <script>
+    //Standard config av canvas. Må ha for at canvaset for å fungere
+        const canvas = document.getElementById("drawingarea")
+        canvas.width = 800
+        canvas.height = 600 
+        const ctx = canvas.getContext("2d")
+
+     //Standard tegnemetoder i canvaset 
+
+        //Path (stier)
+        ctx.beginPath()
+        ctx.moveTo(800,600) //Hvor skal streken starte
+        ctx.lineTo(0,0)  //Hvor streken skal 
+        ctx.stroke() //For at vi skal se streken. Default svart 
+        ctx.closePath() //Husk alltid å lukke pathen. Veldig viktig!!
+
+        //Rectangles (rect)
+        ctx.beginPath()
+        ctx.rect(100, 100, 200, 200)
+        ctx.fillStyle = "pink" //Hvilken farge vi vil bruke 
+        ctx.fill() //fyller formen
+        ctx.strokeStyle = "purple"
+        ctx.stroke()
+        ctx.closePath()
+        //For å tømme deler av canvaset: ctx.clearRect(0,0, 150, 150)
+
+       //For å tømme hele canvaset ctx.clearRect(0,0, canvas.width, canvas.height)
+
+        //Sirkel (arc)
+        ctx.beginPath()
+        ctx.arc(400, 400, 100, 0, 2 * Math.PI)
+        ctx.fillStyle = "purple"
+        ctx.fill()
+        ctx.strokeStyle = "pink"
+        ctx.stroke()
+        ctx.closePath()
+
+        //text 
+        ctx.beginPath()
+        ctx.font= "150px Georgia"
+        ctx.strokeText("5", 360, 425,)
+        ctx.font = "24px Arial"
+        ctx.fillStyle = "pink"
+        ctx.fillText("Julie", 550, 50)
+        ctx.closePath()
+
+        //tegn et eksisterende bilde inn  i canvas
+        const pumpkin = new Image()
+        let pumpkinLoaded = false
+        pumpkin.onload = () => {pumpkinLoaded = true}
+        pumpkin.src= "pumpkin.png"
+        pumpkinLoaded ? ctx.drawImage(pumpkin, 50, 50, 128, 128) : null
+    </script>
+</body>
+</html>
