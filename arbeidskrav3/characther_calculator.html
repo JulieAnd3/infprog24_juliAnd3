@@ -53,14 +53,25 @@
         //Variabel for å printe ut 
         let resultprint =document.getElementById("result")
 
+        //Variabl for karakterer
+        const grades = [
+        {grade: "F", treshold: 0},
+        {grade: "E", treshold: 25},
+        {grade: "D", treshold: 44},
+        {grade: "C", treshold: 68},
+        {grade: "B", treshold: 88},
+        {grade: "A", treshold: 100}
+        ]
+
+
+
         btncalculate.addEventListener("click", function(event){ //finner ikke fram verdien før brukeren har trykket på knappen
             //Value as number for å få den som tall med en gang
             const exam1calc = document.getElementById("exam1points").valueAsNumber
             const exam2calc = document.getElementById("exam2points").valueAsNumber 
             calcresult =  (0.3 * (exam1calc / 10 * 100)) + (0.7 * (exam2calc / 12 * 100))
         })
-
-        console.log(calcresult)
+        
 
         //skriver ut resultatet:
         resultprint.innerHTML = calcresult 
