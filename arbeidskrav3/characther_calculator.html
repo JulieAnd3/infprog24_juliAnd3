@@ -5,10 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karakter kalkulator</title>
     <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main{
+            background-color: #ccc;
+            padding: 1rem;
+        }
+        section{
+            display:flex;
+            padding: 0.5rem;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
     <main>
+        <h2>Karakter kalkulator</h2>
         <section>
             <label>Poeng på eksamensoppgave 1:</label>
             <!--Bruker input som gir brukern en begrensning på hva de kan putte inn. Så den ikke overgår mulige poeng-->
@@ -26,16 +42,13 @@
 
     <script>
         //Variabler for HTML elementene
-        const exam1 = document.getElementById("exam1points")
-        const exam2 = document.getElementById("exam2points")
+        const exam1 = document.getElementById("exam1points").valueAsNumber
+        const exam2 = document.getElementById("exam2points").valueAsNumber
         const btncalculate = document.getElementById("calculate")
         const btnrestart = document.getElementById("restart")
-        let result = document.getElementById("result")
 
-        btncalculate.addEventListener("click", function(){
-            test = exam1 + exam2
-            result.innerHTML = test
-        })
+        
+
         
 
         </script>
