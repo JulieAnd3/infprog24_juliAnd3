@@ -25,16 +25,16 @@
 <body>
     <main>
         <h2>Karakter kalkulator</h2>
-        <section>
+        <p>
             <label>Poeng på eksamensoppgave 1:</label>
             <!--Bruker input som gir brukern en begrensning på hva de kan putte inn. Så den ikke overgår mulige poeng-->
             <input type="number" id="exam1points" min="0" max="10"> 
-        </section>
+        </p>
         <!--Form krever at bruker har muligheten til å trykke sen inn for å lagre resultatet-->
-        <section>
+        <p>
             <label>Poeng på eksamensoppgave 2:</label>
-            <input type="number" id="exam2points" min="0" max="12"> 
-        </section>
+            <input type="number" id="exam2points"min="0" max="12"> 
+        </p>
         <button id="calculate">Regn ut</button>
         <p>Din karakter er: <span id="result"></span></p>
         <button id="restart">Restart</button>
@@ -42,15 +42,28 @@
 
     <script>
         //Variabler for HTML elementene
-        const exam1 = document.getElementById("exam1points").valueAsNumber
-        const exam2 = document.getElementById("exam2points").valueAsNumber
         const btncalculate = document.getElementById("calculate")
         const btnrestart = document.getElementById("restart")
+        const exam1 = document.getElementById("exam1points")
+        const exam2 = document.getElementById("exam2points")
 
-        
+        //variabel for å lagre utregningen 
+        let calcresult = ""
 
-        
+        //Variabel for å printe ut 
+        let resultprint =document.getElementById("result")
 
+        btncalculate.addEventListener("click", function(event){ //finner ikke fram verdien før brukeren har trykket på knappen
+            //Value as number for å få den som tall med en gang
+            const exam1calc = document.getElementById("exam1points").valueAsNumber
+            const exam2calc = document.getElementById("exam2points").valueAsNumber 
+            calcresult =  (0.3 * (exam1calc / 10 * 100)) + (0.7 * (exam2calc / 12 * 100))
+        })
+
+        console.log(calcresult)
+
+        //skriver ut resultatet:
+        resultprint.innerHTML = calcresult 
         </script>
 </body>
 </html>
