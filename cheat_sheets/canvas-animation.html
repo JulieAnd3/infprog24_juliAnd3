@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas animation</title>
+    <style>
+        body{
+            background: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas{
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="anim-area"></canvas>
+
+    <script>
+        //Canvas config
+        const c = document.getElementById("anim-area")
+        c.width = 900
+        c.height = 600
+        const ctx = c.getContext("2d")
+
+        //Request animation frame: automatiserer nye bildetegninger. En metode vi henter fra nettleserern
+        const requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame 
+        || window.msRequestAnimationFrame || windoow.mozRequestAniationFrame 
+
+        //Definerer startpunkter 
+        const circle = {
+            x:100,
+            y:100,
+            r:15,
+        }
+
+        //Rekursiv funksjon som kaller seg selv. Avhenging av skjerm/nettleser den vises i
+        function frames(){
+            //Tøm frame for ny opptegning:
+            ctx.clearRect(0, 0,c.width, c.height)
+
+            //Tegne en sirkel:
+            ctx.beginPath()
+            ctx.arc(circle.x, circle.y, circle.r, 0, 2*Math.PI)
+            ctx.fillStyle = "pink"
+            ctx.fill()
+            ctx.closePath()
+
+            //En test som sjekker om sirkelen har nådd enden av canvaset. Den vil stoppe å plusse på 5 når den når enden
+            if(circle.x < c.width - circle.r) {
+                circle.x = circle.x + 5
+            } 
+            if(circle.x === c.width -circle.r){ //når den treffer veggen faller den ned
+                if(circle.y < c.height - circle.r){
+                    circle.y = circle.y + 10
+                } else{ //Gir en bestemt posisjon i canvaset. Så sirkelen ikke går gjennom gulvet
+                    circle.y = c.height - circle.r
+                }
+            }
+
+            
+            requestAnimationFrame(frames)
+            console.log("requestAnimationFram fungerer")
+            
+            
+            
+            //Forslaget mitt
+            /*if(x === 890){
+                
+            }else{
+                
+            //Rekursivt kall. (den skal kalle seg selv)
+            requestAnimationFrame(frames) 
+            }*/
+        }
+        //Kaller frames funksjon første gang
+        frames()
+    </script>
+</body>
+</html>
