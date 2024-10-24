@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas mini game</title>
+    <style>
+        body{
+            background: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas{
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="anim-area"></canvas>
+
+    <script>
+        //Canvas config
+        const c = document.getElementById("anim-area")
+        c.width = 900
+        c.height = 600
+        const ctx = c.getContext("2d")
+
+        //Request animation frame: automatiserer nye bildetegninger. En metode vi henter fra nettleserern
+        const requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame 
+        || window.msRequestAnimationFrame || windoow.mozRequestAniationFrame 
+
+        //Spillkonfigurasjon:
+        const game = {
+            speed: 3,
+            count: 0,
+        }
+
+        //Definerer startpunkter 
+        const hero = {
+            x:100,
+            y:100,
+            w: 15,
+            h: 15,
+        }
+
+        //Variabel for lilla firkant:
+        const purplemountain = {
+            x:c.width / 2 - 25,
+            y: c.height / 2 - 25,
+            w: 50,
+            h:50,
+        }
+        //Definere varibaler for å sjekke om en retning er aktiv 
+        let up = false
+        let down = false
+        let right = false
+        let left = false 
+
+        
+
+        //Sjekk om en retning er aktivert med piltast 
+        document.addEventListener("keydown", function(event){
+            if(event.key === "d" || event.key === "ArrowRight"){
+                right = true
+            }
+            if(event.key === "s" || event.key === "ArrowDown"){
+                down = true
+            }
+            if(event.key === "a" || event.key === "ArrowLeft"){
+                left = true
+            }
+            if(event.key === "w" || event.key === "ArrowUp"){
+                up = true
+            }
+            if(event.key === "h"){
+                game.speed = 10
+            }
+        })
+        //Sjekk om er retning er deaktivert ved å ikke trykke på piltast. Gjør at helten stopper når vi ikke trykker ned tasten
+        document.addEventListener("keyup", function(event){
+            if(event.key === "d" || event.key === "ArrowRight"){
+                right = false
+            }
+            if(event.key === "s" || event.key === "ArrowDown"){
+                down = false 
+            }
+            if(event.key === "a" || event.key === "ArrowLeft"){
+                left = false 
+            }
+            if(event.key === "w" || event.key === "ArrowUp"){
+                up = false 
+            }
+            if(event.key === "h"){
+                game.speed = 3
+            }
+        })
+
+        //Funksjon for å tegne firkanter
+        function drawRect(x = 0, y = 0, w = 10, h = 10, color = "#000000"){
+            ctx.beginPath()
+            ctx.rect(x, y, w, h)
+            ctx.fillStyle = color 
+            ctx.fill()
+            ctx.closePath()
+        }
+
+        //Funksjon for randomisering
+        function randomMinMax(min, max){
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+
+        //Rekursiv funksjon som kaller seg selv. Avhenging av skjerm/nettleser den vises i
+        function frames(){
+            //Tøm frame for ny opptegning:
+            ctx.clearRect(0, 0,c.width, c.height)
+
+            //Tegn helten:
+            drawRect(hero.x, hero.y, hero.w, hero.h, "pink")
+
+            //Tegn hinder:
+            drawRect(purplemountain.x, purplemountain.y, purplemountain.w, purplemountain.h, "purple")
+            
+            //Tegne / skriveut count
+            ctx.font = "30px Arial"
+            ctx.fillStyle = "#00000"
+            ctx.fillText(game.count, 10, 40)
+
+            //Sjekker etter bevegelse:
+            right ? hero.x = hero.x + game.speed : null
+            left ? hero.x = hero.x - game.speed : null
+            down ? hero.y = hero.y + game.speed : null
+            up ? hero.y = hero.y - game.speed : null
+
+            //Sjekker om firkant er utenfor canvas             
+            if(hero.x < 0 -hero.w){ //Min løsning: la på -hero.w for å få slinglingrsmoment
+                hero.x = c.width 
+            }
+            if(hero.x > c.width){
+                hero.x = -hero.w 
+            }
+            if(hero.y < 0 -hero.h){ //Min løsning: Brukte samme løsning her bare med høyden
+                hero.y = c.height
+            }
+            if(hero.y > c.height){
+                hero.y = -hero.h 
+            }
+            
+            //Sjekker om helt koliderer med lilla firkant:
+            if(hero.x + hero.w > purplemountain.x 
+                && hero.x < purplemountain.x + purplemountain.w
+                && hero.y + hero.y + hero.h > purplemountain.y 
+                && hero.y < purplemountain.y + purplemountain.w
+            ){
+                console.log(game.count)
+                hero.x = randomMinMax(0, c.width - hero.w)
+                hero.y = randomMinMax(0, c.height - hero.h)
+                game.count = game.count + 1 //Gir et poeng når helt treffer lilla
+
+            }
+
+
+            requestAnimationFrame(frames)
+            console.log("requestAnimationFram fungerer")
+            
+            
+            
+
+        }
+        //Kaller frames funksjon første gang
+        frames()
+    </script>
+</body>
+</html>
