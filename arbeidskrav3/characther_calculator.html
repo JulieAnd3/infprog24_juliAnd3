@@ -63,7 +63,15 @@
         {grade: "A", treshold: 100},
         ]
 
+        let exam1input = false 
 
+        exam1.addEventListener("input", () => {
+            console.log(exam1.value)
+            exam1input = true 
+        })
+        console.log(exam1input)
+    
+        
 
         btncalculate.addEventListener("click", function(event){ //finner ikke fram verdien før brukeren har trykket på knappen
             //Value as number for å få den som tall med en gang
@@ -100,8 +108,6 @@
             //skriver ut resultatet:
             resultprint.innerHTML = finalgrade 
         })
-        
-
         </script>
 </body>
 </html>
