@@ -60,7 +60,7 @@
         {grade: "D", treshold: 44},
         {grade: "C", treshold: 68},
         {grade: "B", treshold: 88},
-        {grade: "A", treshold: 100}
+        {grade: "A", treshold: 100},
         ]
 
 
@@ -69,12 +69,39 @@
             //Value as number for å få den som tall med en gang
             const exam1calc = document.getElementById("exam1points").valueAsNumber
             const exam2calc = document.getElementById("exam2points").valueAsNumber 
-            calcresult =  (0.3 * (exam1calc / 10 * 100)) + (0.7 * (exam2calc / 12 * 100))
+            calcresult = Math.round((0.3 * (exam1calc / 10 * 100)) + (0.7 * (exam2calc / 12 * 100))
+            ) 
+            console.log(calcresult) //Bare for å følge med på resultatet. Husk å slette
+
+            //Variabel for der karakteren skal printes ut 
+            let finalgrade = ""
+
+            //En test som sammenligner resultatene fra poengene med tresholdene og gir riktig karkater.
+            if(calcresult === grades[0].treshold){
+                finalgrade = grades[0].grade
+            }
+            if(calcresult => grades[1].treshold && calcresult < grades[2].treshold){
+                finalgrade = grades[1].grade
+            }
+            if(calcresult => grades[2].treshold && calcresult < grades[3].treshold){
+                finalgrade = grades[2].grade
+            }
+            if(calcresult => grades[3].treshold && calcresult < grades[4].treshold){
+                finalgrade = grades[3].grade
+            }
+            if(calcresult === grades[4].treshold && calcresult < grades[5].treshold){
+                finalgrade = grades[4].grade
+            }
+            if(calcresult === grades[5].treshold){
+                finalgrade = grades[5].grade
+            }         
+            //Problem: den gir bare karakter c og a 
+
+            //skriver ut resultatet:
+            resultprint.innerHTML = finalgrade 
         })
         
 
-        //skriver ut resultatet:
-        resultprint.innerHTML = calcresult 
         </script>
 </body>
 </html>
