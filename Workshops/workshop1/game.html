@@ -89,10 +89,12 @@
 
         //TODO: config
         const gameConfig = {
-            playerName: "Ziino3",
+            playerName: "ziino3",
             energy: 10,
             points: 4000,
-            duration: 30
+            duration: 30,
+            gamePaused: false,
+            gamePausedText: "Press P to pause"
         }
 
         console.log(gameConfig)
@@ -105,7 +107,15 @@
             arrays: 7
         }
 
-        
+        //Array med spillelementtyper:
+        const itemTypes = ["varibale", "function", "loop", "array", "bug", "energydrink"]
+
+        //Helt config (fortan)
+        const fortan = {
+            speed: 5,
+            x: canvas.width / 2,
+            y:canvas.height / 2,
+        }
 
         //(BONUS) TODO: function for all prints
         function updateStaticUI() {
@@ -127,26 +137,6 @@
         }
 
         updateStaticUI()
-
-        
-
-
-        //Pause game info knapp WS4, oppg 2:
-            //Bakgrunnen 
-        ctx.beginPath()
-        ctx.rect(670, 580, 130, 40)
-        ctx.fillStyle = "white"
-        ctx.fill()
-        ctx.closePath()
-            //Teksten
-        ctx.beginPath()
-        ctx.fillStyle = "#3c429b"
-        ctx.font = "15px Arial"
-        ctx.fillText("Press P to pause", 680, 595)
-        ctx.closePath()
-
-
-    
 
         //WS2, Oppg 1:
         function toggleVisibility(elementid) {
@@ -199,8 +189,70 @@
         updateConfigValue("duration", 100)
         updateConfigValue("loops", 1000)
 
-  
+        //Pause game info knapp WS4, oppg 2:
+            //Bakgrunnen 
+        ctx.beginPath()
+        ctx.rect(650, 580, 150, 40)
+        ctx.fillStyle = "#ffff"
+        ctx.fill()
+        ctx.closePath()
 
+
+        //Klargjør helten:
+        let fortanLoaded = false 
+        let fortanimage = new Image()
+        fortanimage.src = "icons/fortran.png"
+        fortanimage.onload = () => { fortanLoaded = true; }
+
+        //WS3, Oppg. 5.2: draItem:
+        function drawItem(type, x, y){
+            let itemImage = new Image()
+            itemImage.src = "icons.variable.svg"
+            itemImage.onload = () => {ctx.drawImage(itemImage, x, y)}
+
+        }
+
+        const requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame 
+        || window.msRequestAnimationFrame || windoow.mozRequestAniationFrame 
+
+        function drawElements() { //Her vi tegner ting
+            console.log("Kjører")
+            if(fortanLoaded === true){
+                ctx.drawImage(fortanimage, fortan.x, fortan.y)
+            }
+
+            //WS3 oppg 4.2;
+            if(gameConfig.gamePaused === true){
+                ctx.beginPath()
+                ctx.font = "100px Arial"
+                ctx.fillStyle = "red"
+                ctx.fillText("PAUSED", 250, 300)
+                ctx.closePath()
+
+                //Oppdatere pause info tekst
+                gameConfig.gamePausedText = "Press P to unpause"
+            } else{
+                gameConfig.gamePausedText = "Press P to pause"
+            }
+
+            /* Ga meg problemer. Orker ikke mer
+            
+            drawItem("variable", 50, 100)
+            drawItem("loop", 400, 500)
+            
+            */
+
+            //Teksten
+            ctx.beginPath()
+            ctx.fillStyle = "#3c429b"
+            ctx.font = "15px Arial"
+            ctx.fillText(gameConfig.gamePausedText, 660, 595)
+            ctx.closePath()
+
+            requestAnimationFrame(drawElements)
+        }
+
+        drawElements()
     </script>
 </body>
 </html>
