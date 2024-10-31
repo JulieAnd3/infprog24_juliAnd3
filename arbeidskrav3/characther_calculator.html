@@ -67,19 +67,32 @@
         let exam1input = false 
         let exam2input = false 
 
+        //Deaktiverer calculate button
+        btncalculate.disabled = true 
+
         //Forandrer status når brukeren legger inn input 
         exam1.addEventListener("input", () => {
             exam1input = true 
             console.log(exam1input)
+
+            //if test for å aktivere calcualte knappen:
+            if(exam1input === true && exam2input === true){
+            btncalculate.disabled = false 
+            console.log("wooo")
+            }
+            
         })
         exam2.addEventListener("input", () => {
             exam2input = true 
             console.log(exam2input)
-        })
 
-       
-    
-        
+            
+            //if test for å aktivere calcualte knappen igjen: (Dette er det eneste jeg kom fram til som funker)
+            if(exam1input === true && exam2input === true){
+            btncalculate.disabled = false 
+            console.log("wooo")
+            }
+        })
 
         btncalculate.addEventListener("click", function(event){ //finner ikke fram verdien før brukeren har trykket på knappen
             //Value as number for å få den som tall med en gang
