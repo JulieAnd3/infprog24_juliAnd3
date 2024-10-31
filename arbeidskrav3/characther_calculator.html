@@ -85,25 +85,25 @@
             let finalgrade = ""
 
             //En test som sammenligner resultatene fra poengene med tresholdene og gir riktig karkater.
-            if(calcresult === grades[0].treshold){
+            if(calcresult >= grades[0].treshold && calcresult < grades[1].treshold){
                 finalgrade = grades[0].grade
             }
-            if(calcresult => grades[1].treshold && calcresult < grades[2].treshold){
+            else if(calcresult >= grades[1].treshold && calcresult < grades[2].treshold){
                 finalgrade = grades[1].grade
             }
-            if(calcresult => grades[2].treshold && calcresult < grades[3].treshold){
+            else if(calcresult >= grades[2].treshold && calcresult < grades[3].treshold){
                 finalgrade = grades[2].grade
             }
-            if(calcresult => grades[3].treshold && calcresult < grades[4].treshold){
+            else if(calcresult >= grades[3].treshold && calcresult < grades[4].treshold){
                 finalgrade = grades[3].grade
             }
-            if(calcresult === grades[4].treshold && calcresult < grades[5].treshold){
+            else if(calcresult >= grades[4].treshold && calcresult < grades[5].treshold){
                 finalgrade = grades[4].grade
             }
-            if(calcresult === grades[5].treshold){
+            else if(calcresult >= grades[5].treshold){
                 finalgrade = grades[5].grade
             }         
-            //Problem: den gir bare karakter c og a 
+            //Brukte Chat GPT versjon 4o med promt: "i have problem that the code only gives me character a and c. Could you look over the code and report back the problem causing this?" url:https://chatgpt.com/c/6723c2b9-8eb8-8007-8ab1-a3d089610779
 
             //skriver ut resultatet:
             resultprint.innerHTML = finalgrade 
