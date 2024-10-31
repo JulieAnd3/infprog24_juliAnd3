@@ -63,13 +63,21 @@
         {grade: "A", treshold: 100},
         ]
 
+        //Status på brukerinput
         let exam1input = false 
+        let exam2input = false 
 
+        //Forandrer status når brukeren legger inn input 
         exam1.addEventListener("input", () => {
-            console.log(exam1.value)
             exam1input = true 
+            console.log(exam1input)
         })
-        console.log(exam1input)
+        exam2.addEventListener("input", () => {
+            exam2input = true 
+            console.log(exam2input)
+        })
+
+       
     
         
 
