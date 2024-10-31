@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,13 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Workshop Game</title>
     <link href="style.css" rel="stylesheet" media="screen" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="meta/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="mask-icon" href="meta/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+
+    <style>
+        
+    </style>
 </head>
 <body>
     <header>
@@ -31,31 +36,31 @@
         </nav>
     </header>
     <main>
-        
+        <canvas id="canvas-area"></canvas>
         <section id="notebook">
-            <div id="notebook-page" class="hidden">
+            <div id="notebook-page">
                 
                 <h2>Notater</h2>
                 <table>
                     <tr>
                         <td><img src="icons/variable.svg" alt="" /></td>
                         <td>Variabler</td>
-                        <td id="note-variables">0</td>
+                        <td><span id="variables">0</span></td>
                     </tr>
                     <tr>
                         <td><img src="icons/array.svg" alt="" /></td>
                         <td>Arrayer</td>
-                        <td id="note-arrays">1</span></td>
+                        <td><span id="arrays">1</span></td>
                     </tr>
                     <tr>
                         <td><img src="icons/loop.svg" alt="" /></td>
                         <td>Løkker</td>
-                        <td id="note-loops">2</td>
+                        <td><span id="loops">2</span></td>
                     </tr>
                     <tr>
                         <td><img src="icons/function.svg" alt="" /></td>
                         <td>Funksjoner</td>
-                        <td id="note-functions">1</td>
+                        <td><span id="functions">1</span></td>
                     </tr>
                 </table>
             </div>
@@ -75,41 +80,45 @@
     </main>
     <script>
         //PREPARE GAME CONFIG AND VARIABLES
-        const gameConfig = {
-            player: "Julie",
-            energy: "3",
-            points: "10",
-            duration: "138",
-        }
-        
-        document.getElementById("playerName").innerHTML = gameConfig.player 
-        document.getElementById("energy").innerHTML = gameConfig.energy
-        document.getElementById("points").innerHTML = gameConfig.points
-        document.getElementById("duration").innerHTML = gameConfig.duration
+
+        //Canvas WS3, oppg 1:
+        const canvas = document.getElementById("canvas-area")
+        canvas.width = 800
+        canvas.height = 600 
+        const ctx = canvas.getContext("2d")
+
         //TODO: config
+        const gameConfig = {
+            playerName: "Ziino3",
+            energy: 10,
+            points: 4000,
+            duration: 30
+        }
+
+        console.log(gameConfig)
        
         //TODO: notebook
         const notebook = {
-            varibales: 3,
-            arrays: 2,
+            variables: 2,
             loops: 4,
-            functions: 7,
+            functions: 3,
+            arrays: 7
         }
+
         
 
         //(BONUS) TODO: function for all prints
         function updateStaticUI() {
             //TODO: print playerinfo to HTML
-            if(gameConfig.player === ""){
-            document.getElementById("playerName").innerHTML = "Waiting for player"
-            } else{
-            document.getElementById("playerName").innerHTML = gameConfig.player
+            if(gameConfig.playerName === "") {
+                document.getElementById("playerName").innerHTML = "Waiting for player..."
+            } else {
+                document.getElementById("playerName").innerHTML = gameConfig.playerName
             }
-
             document.getElementById("energy").innerHTML = gameConfig.energy
             document.getElementById("points").innerHTML = gameConfig.points
             document.getElementById("duration").innerHTML = gameConfig.duration
-
+            
             //TODO: print notebook info to HTML
             document.getElementById("variables").innerHTML = notebook.variables
             document.getElementById("loops").innerHTML = notebook.loops
@@ -117,44 +126,81 @@
             document.getElementById("arrays").innerHTML = notebook.arrays
         }
 
-        function updateSingleStaticUI(elementId, value){
-            const element = document.getElementById(elementId)
-            if(element) {
-                element.innerHTML = value
+        updateStaticUI()
+
+        
+
+
+        //Pause game info knapp WS4, oppg 2:
+            //Bakgrunnen 
+        ctx.beginPath()
+        ctx.rect(670, 580, 130, 40)
+        ctx.fillStyle = "white"
+        ctx.fill()
+        ctx.closePath()
+            //Teksten
+        ctx.beginPath()
+        ctx.fillStyle = "#3c429b"
+        ctx.font = "15px Arial"
+        ctx.fillText("Press P to pause", 680, 595)
+        ctx.closePath()
+
+
+    
+
+        //WS2, Oppg 1:
+        function toggleVisibility(elementid) {
+            console.log(elementid)
+            const elem = document.getElementById(elementid)
+            if(elem.classList.contains("hidden")) {
+                elem.style.display = "block"
+                elem.classList.remove("hidden")
             } else {
-                console.error(`Element med id ${elementId} ble ikke funnet`)
+                elem.style.display = "none"
+                elem.classList.add("hidden")
             }
         }
-
-        gameConfig.energy = "1200"
-        updateSingleStaticUI("energy", gameConfig.energy)
-
-        //notebookToggler og infoToggler er knappene som skal skjule/vise notatblokk og informasjonsskjerm.
-        const notebookElement = document.getElementById("notebook-page")
-        const notebookToggler = document.getElementById("notebookToggler")
-        const infoToggler = document.getElementById("infoToggler")
-        const info = document.getElementById("info")
-
-        // Funksjon for å vise/skjule notatblokk
-        function toggleNotebook() {
-            notebookElement.classList.toggle('hidden');
-        }
-
-        // Funksjon for å vise/skjule info-skjermen. Se også Tore Marius sitt løsningsforslag for annen løsning
-        function toggleInfo() {
-            info.classList.toggle('hidden');
-        }
-        notebookToggler.addEventListener('click', toggleNotebook);
-        infoToggler.addEventListener('click', toggleInfo);
-
+        //WS2, Oppg 2:
         document.addEventListener("keydown", function(event) {
-            if(event.key === "n"){ 
-                toggleNotebook()
+            if(event.key === "n") {
+                toggleVisibility("notebook")
             }
             if(event.key === "i") {
-                toggleInfo()
+                toggleVisibility("info")
             }
         })
+        //WS2, Oppg 3:
+        document.getElementById("notebookToggler").addEventListener("click", function() {
+            toggleVisibility("notebook")
+        })
+        document.getElementById("infoToggler").addEventListener("click", function() {
+            toggleVisibility("info")
+        })
+        //WS2, Oppg 4:
+        function updateSingleStaticUI(elementid, value) {
+            document.getElementById(elementid).innerHTML = value
+        }
+        //updateSingleStaticUI("duration", 31)
+
+
+        //WS2, Oppg 5:
+        function updateConfigValue(configType, value) {
+            configType === "energy" ? gameConfig.energy += value : null
+            configType === "points" ? gameConfig.points += value : null
+            configType === "duration" ? gameConfig.duration += value : null
+            configType === "variables" ? notebook.variables += value : null
+            configType === "arrays" ? notebook.arrays += value : null
+            configType === "functions" ? notebook.functions += value : null
+            configType === "loops" ? notebook.loops += value : null
+
+            updateStaticUI()
+        }
+        updateConfigValue("energy", -3)
+        updateConfigValue("duration", 100)
+        updateConfigValue("loops", 1000)
+
+  
+
     </script>
 </body>
 </html>
