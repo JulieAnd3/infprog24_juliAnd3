@@ -66,8 +66,8 @@
         contacts.map((contact, index) => {
             contactlist += `<article>
                 <p><strong>${contact.lastname}, ${contact.firstname}</strong><br />
-                    Kontor: ${contact.office} | E-post: ${contact.mail}</p>
-            </article>`
+                Kontor: ${contact.office} | E-post: <a href= "mailto:${contact.mail}">${contact.mail}</a></p>
+            </article>` //Se vedlagt dokument for linje: 69
         })
 
         document.getElementById("contactlist").innerHTML = contactlist
@@ -99,7 +99,7 @@
         //CLOCK
         
 
-        //Utskrift for todos. Se vedlagt dokument 
+        //Utskrift for todos. Se vedlagt dokument for linje 102-106 
         document.getElementById("todo1").innerHTML = todos[0].text
         document.getElementById("todo1stat").innerHTML = todos[0].status
         document.getElementById("todo2").innerHTML = todos[1].text
