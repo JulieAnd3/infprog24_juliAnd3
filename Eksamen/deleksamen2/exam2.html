@@ -37,15 +37,6 @@
         <section id="todos">
             <h2>Oppgaver</h2>
             <ul id="todolist">
-                <!-- De to listeelementene skal byttes ut med utskrift av data fra programkoden i <script> -->
-                <li>
-                    <span class="tast-text" id="todo1">Les eksamensteksten</span> <!--La til en ID-->
-                    <span class="task-status task-status-done" id="todo1stat">Done</span> <!--La til en ID-->
-                </li>
-                <li>
-                    <span class="tast-text" id="todo2">Løs oppgavene i InnfProg-eksamen</span> <!--La til en ID-->
-                    <span class="task-status task-status-todo" id="todo2stat">To do</span> <!--La til en ID-->
-                </li>
             </ul>
         </section>
         <footer><p>Adminpanel IPv1.0</p></footer>
@@ -94,16 +85,39 @@
             {text: "Lag funksjonalitet for å registrere nye oppgaver", status: "To do"},
             {text: "Lag funksjonalitet for å sette en eksisterende oppgave til utført ved å endre status", status: "To do"}
         ]
+
+        //Lagring av Todos:
+        document.getElementById("savetask").addEventListener("click", savetodo)  
+     
+         
+        function savetodo(){
+            console.log("knappen funker")
+            const todovalue = document.getElementById("task").value
+            
+            //todos.push(todovalue)
+        }
         console.log(todos)
         
         //CLOCK
         
 
-        //Utskrift for todos. Se vedlagt dokument for linje 102-106 
-        document.getElementById("todo1").innerHTML = todos[0].text
-        document.getElementById("todo1stat").innerHTML = todos[0].status
-        document.getElementById("todo2").innerHTML = todos[1].text
-        document.getElementById("todo2stat").innerHTML = todos[1].status
+        //Utskrift for todos. Se vedlagt dokument for linje 103-114
+        todos.filter(todo => todo.status === "Done").map(todo => document.getElementById("todolist").innerHTML += 
+        `<li>
+            <span>${todo.text}</span>
+            <span class="task-status task-status-done">${todo.status}</span>
+        </li> ` )
+
+        todos.filter(todo => todo.status === "To do").map(todo => document.getElementById("todolist").innerHTML += 
+        `<li>
+            <span>${todo.text}</span>
+            <span class="task-status task-status-todo">${todo.status}</span>
+        </li> ` )
+
+
+
+       
+        
 
     </script>
 </body>
