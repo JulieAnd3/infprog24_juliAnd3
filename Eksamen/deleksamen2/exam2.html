@@ -52,7 +52,11 @@
             {lastname: "Jansson", firstname: "Sigried", office: "B1", mail: "s.jansson@company.com"}
         ]
 
+        
+       
         let contactlist = ""
+       
+        console.log(contacts)
 
         contacts.map((contact, index) => {
             contactlist += `<article>
@@ -103,8 +107,40 @@
 
         console.log(todos)
         
-        //CLOCK
-        
+    //CLOCK. Mer detaljer se dokument linje 106- Kilde:https://www.geeksforgeeks.org/how-to-design-digital-clock-using-javascript/
+    // Calling showTime function at every second
+    setInterval(showTime, 1000);
+
+    // Defining showTime funcion
+    function showTime() {
+    // Getting current time and date
+    let time = new Date();
+    let hour = time.getHours();
+    let min = time.getMinutes();
+    let sec = time.getSeconds();
+    //am_pm = "AM";
+
+    // Setting time for 12 Hrs format
+    /*if (hour >= 12) {
+        if (hour > 12) hour -= 12;
+        am_pm = "PM";
+    } else if (hour == 0) {
+        hr = 12;
+        am_pm = "AM";
+    }*/
+    
+
+    hour =
+        hour < 10 ? "0" + hour : hour;
+    min = min < 10 ? "0" + min : min;
+    sec = sec < 10 ? "0" + sec : sec;
+
+    let currentTime =
+    hour + ":" + min + ":" + sec; //Fjernet am 
+    // Displaying the time
+    document.getElementById("clock").innerHTML = currentTime;
+}
+showTime();
 
         //Utskrift for todos. Se vedlagt dokument for linje 109-120
         todos.filter(todo => todo.status === "Done").map(todo => document.getElementById("todolist").innerHTML += 
