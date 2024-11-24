@@ -86,22 +86,27 @@
             {text: "Lag funksjonalitet for å sette en eksisterende oppgave til utført ved å endre status", status: "To do"}
         ]
 
-        //Lagring av Todos:
+       
+        //Legge til Todos: Se vedlagt dokument for linje 91-
         document.getElementById("savetask").addEventListener("click", savetodo)  
-     
-         
+        
         function savetodo(){
             console.log("knappen funker")
+            const todo = "To do"
             const todovalue = document.getElementById("task").value
-        
-            todos.push({text})
-        }
+            todos.push({text: todovalue, status: "To do"})
+            document.getElementById("todolist").innerHTML += `<li><span>${todovalue}</span>
+                <span class="task-status task-status-todo">${todo}</span>
+                </li> `
+            document.getElementById("task").value = "" //Kilde. Se vedlagt dokument. Linje 101
+        }   
+
         console.log(todos)
         
         //CLOCK
         
 
-        //Utskrift for todos. Se vedlagt dokument for linje 103-114
+        //Utskrift for todos. Se vedlagt dokument for linje 109-120
         todos.filter(todo => todo.status === "Done").map(todo => document.getElementById("todolist").innerHTML += 
         `<li>
             <span>${todo.text}</span>
