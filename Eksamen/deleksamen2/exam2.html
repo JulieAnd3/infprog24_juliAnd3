@@ -52,7 +52,8 @@
             {lastname: "Jansson", firstname: "Sigried", office: "B1", mail: "s.jansson@company.com"}
         ]
 
-        
+        //Sortering av etternavn. Se vedlagt dokument for linje: 57
+        contacts.sort((a, b) => a.lastname.localeCompare(b.lastname));
        
         let contactlist = ""
        
@@ -107,7 +108,7 @@
 
         console.log(todos)
         
-    //CLOCK. Mer detaljer se dokument linje 106- Kilde:https://www.geeksforgeeks.org/how-to-design-digital-clock-using-javascript/
+    //CLOCK. Mer detaljer se dokument linje 111 Kilde:https://www.geeksforgeeks.org/how-to-design-digital-clock-using-javascript/
     // Calling showTime function at every second
     setInterval(showTime, 1000);
 
