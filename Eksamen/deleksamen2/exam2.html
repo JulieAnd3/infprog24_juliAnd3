@@ -80,7 +80,15 @@
         document.getElementById("incomingequity").innerHTML = equity
         let balance = 0;    //Startbalanse for utregning av utgifter og inntekter i november
 
-        //Utskrift av bokføringene. Se dokument linje 85-89
+        //Utregninger av balance i november. Se dokument linje 83-85
+        let balanceNov = books[0].amount + books[1].amount + books[2].amount + books[3].amount + books[4].amount + books[5].amount
+        document.getElementById("balance").innerHTML = balanceNov
+
+        //Utregning av egenkapital. Se dokument linje 87-89
+        const ownCapital = equity + balanceNov
+        document.getElementById("equity").innerHTML = ownCapital
+
+        //Utskrift av bokføringene. Se dokument linje 91-95
         books.map(book => document.getElementById("booklines").innerHTML += `
         <span class="booktext">${book.text}</span>
         <span class="bookdate">${book.date}</span>
@@ -120,7 +128,6 @@
                 }   
         }
 
-        
     //CLOCK. Mer detaljer se dokument linje 111 Kilde:https://www.geeksforgeeks.org/how-to-design-digital-clock-using-javascript/
     // Calling showTime function at every second
     setInterval(showTime, 1000);
