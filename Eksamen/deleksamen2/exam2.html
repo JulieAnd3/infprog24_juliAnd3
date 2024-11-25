@@ -25,7 +25,7 @@
                 </div>
                 <div id="booklines">
                     <!-- Skal genereres fra datakilde i <script>. Oppføringen under er for å vise HTML-strukturen -->
-                </div>
+                    </div>
             </section>
             <p>Balanse november: Kr. <span id="balance">-</span></p>
             <p>Egenkapital: Kr. <span id="equity">-</span></p>
@@ -57,8 +57,6 @@
        
         let contactlist = ""
        
-        console.log(contacts)
-
         contacts.map((contact, index) => {
             contactlist += `<article>
                 <p><strong>${contact.lastname}, ${contact.firstname}</strong><br />
@@ -82,12 +80,11 @@
         document.getElementById("incomingequity").innerHTML = equity
         let balance = 0;    //Startbalanse for utregning av utgifter og inntekter i november
 
-        //Utskrift av bokføringene
+        //Utskrift av bokføringene. Se dokument linje 85-89
         books.map(book => document.getElementById("booklines").innerHTML += `
         <span class="booktext">${book.text}</span>
         <span class="bookdate">${book.date}</span>
-        <span class="bookamount">${book.amount}</span>
-        `)
+        <span class="bookamount">${book.amount}</span>`)
 
         //TODOS
         const todos = [
@@ -98,19 +95,39 @@
         ]
 
        
-        //Legge til Todos: Se vedlagt dokument for linje 91-
-        document.getElementById("savetask").addEventListener("click", savetodo)  
+        //Legge til  og sjekke etter brukerinput: Se vedlagt dokument for linje 91-
+        document.getElementById("savetask").addEventListener("click", ifempty)  
         
-        function savetodo(){
-            console.log("knappen funker")
-            const todo = "To do"
-            const todovalue = document.getElementById("task").value
-            todos.push({text: todovalue, status: "To do"})
-            document.getElementById("todolist").innerHTML += `<li><span>${todovalue}</span>
-                <span class="task-status task-status-todo">${todo}</span>
-                </li> `
-            document.getElementById("task").value = "" //Kilde. Se vedlagt dokument. Linje 101
-        }   
+        function ifempty (){
+            //Varibaler for todo 
+            let userinput = false 
+            const task = document.getElementById("task")
+
+            task.addEventListener("input", test)
+            function test(){
+                userinput = true
+                return userinput 
+            }
+
+            console.log(test(userinput))
+
+            if(userinput === false){
+                alert("Du må skrive noe")
+            } else {
+                function savetodo(){
+                console.log("knappen funker")
+                const todo = "To do"
+                const todovalue = document.getElementById("task").value
+                todos.push({text: todovalue, status: "To do"})
+                document.getElementById("todolist").innerHTML += `<li><span>${todovalue}</span>
+                    <span class="task-status task-status-todo">${todo}</span>
+                    </li> `
+                document.getElementById("task").value = "" //Kilde. Se vedlagt dokument. Linje 101
+                }   
+            }
+        }
+
+        
 
         console.log(todos)
         
