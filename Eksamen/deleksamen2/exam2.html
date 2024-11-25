@@ -95,26 +95,20 @@
         ]
 
        
-        //Legge til  og sjekke etter brukerinput: Se vedlagt dokument for linje 91-
+        //Legge til  og sjekke etter brukerinput: Se vedlagt dokument for linje 98-121
         document.getElementById("savetask").addEventListener("click", ifempty)  
         
-        function ifempty (){
+        function ifempty (){ 
             //Varibaler for todo 
-            let userinput = false 
-            const task = document.getElementById("task")
+            const taskInput = document.getElementById("task")
+            const taskValue = taskInput.value
 
-            task.addEventListener("input", test)
-            function test(){
-                userinput = true
-                return userinput 
-            }
-
-            console.log(test(userinput))
-
-            if(userinput === false){
+            if(taskValue === ""){
                 alert("Du må skrive noe")
             } else {
-                function savetodo(){
+                savetodo()
+            }
+            function savetodo(){
                 console.log("knappen funker")
                 const todo = "To do"
                 const todovalue = document.getElementById("task").value
@@ -124,12 +118,8 @@
                     </li> `
                 document.getElementById("task").value = "" //Kilde. Se vedlagt dokument. Linje 101
                 }   
-            }
         }
 
-        
-
-        console.log(todos)
         
     //CLOCK. Mer detaljer se dokument linje 111 Kilde:https://www.geeksforgeeks.org/how-to-design-digital-clock-using-javascript/
     // Calling showTime function at every second
