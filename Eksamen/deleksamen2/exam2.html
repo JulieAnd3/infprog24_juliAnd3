@@ -102,7 +102,6 @@
             {text: "Lag funksjonalitet for å sette en eksisterende oppgave til utført ved å endre status", status: "To do"}
         ]
 
-       
         //Legge til  og sjekke etter brukerinput: Se vedlagt dokument for linje 98-121
         document.getElementById("savetask").addEventListener("click", ifempty)  
         
@@ -127,6 +126,7 @@
                 document.getElementById("task").value = "" //Kilde. Se vedlagt dokument. Linje 101
                 }   
         }
+
 
     //CLOCK. Mer detaljer se dokument linje 111 Kilde:https://www.geeksforgeeks.org/how-to-design-digital-clock-using-javascript/
     // Calling showTime function at every second
@@ -167,20 +167,32 @@ showTime();
         todos.filter(todo => todo.status === "Done").map(todo => document.getElementById("todolist").innerHTML += 
         `<li>
             <span>${todo.text}</span>
-            <span class="task-status task-status-done">${todo.status}</span>
-        </li> ` )
+            <button class="task-status task-status-done">${todo.status}</button> 
+        </li> ` ) //Forandret span til button
 
         todos.filter(todo => todo.status === "To do").map(todo => document.getElementById("todolist").innerHTML += 
         `<li>
             <span>${todo.text}</span>
-            <span class="task-status task-status-todo">${todo.status}</span>
-        </li> ` )
+            <button class="task-status task-status-todo">${todo.status}</button>
+        </li> ` ) //Forandret span til button
+    
+    //Lage fungerende knapper
+    const btn = document.getElementsByClassName("task-status")
+    
+    for (var i = 0; i < btn.length; i++) { //Se vedlagt dokument for kilde linje 182
+    btn[i].addEventListener('click', todoclick);
+    }   
 
 
+    function todoclick(){
+        console.log("knappen funker!")
+        //Neste problem å løse. Hvordan kan jeg finne ut hvilken klasse eller hvilken status todoen har. 
+    }
 
-       
+
         
-
+    
+    
     </script>
 </body>
 </html>
