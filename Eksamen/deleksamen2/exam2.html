@@ -183,13 +183,23 @@ showTime();
     btn[i].addEventListener('click', todoclick);
     }   
 
+    let todostat = todos.map(todo => todo.status === "To do")
+    console.log(todostat) //Husk å fjerne variabelen etter tester 
 
     function todoclick(){
         console.log("knappen funker!")
-        //Neste problem å løse. Hvordan kan jeg finne ut hvilken klasse eller hvilken status todoen har. 
+        if(todostat === true){ //Funker ikke enda 
+            //todos.map(todo => todo.status= "Done")
+            console.log("if testen funker")
+        }
+
+        /*todos.map(todo => todo.status= "Done")*/
+        
+        
     }
 
-
+  
+    
         
     
     
