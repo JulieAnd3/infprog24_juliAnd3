@@ -176,28 +176,47 @@ showTime();
             <button class="task-status task-status-todo">${todo.status}</button>
         </li> ` ) //Forandret span til button
     
-    //Lage fungerende knapper
-    const btn = document.getElementsByClassName("task-status")
-    
-    for (var i = 0; i < btn.length; i++) { //Se vedlagt dokument for kilde linje 182
-    btn[i].addEventListener('click', todoclick);
-    }   
 
-    let todostat = todos.map(todo => todo.status === "To do")
-    console.log(todostat) //Husk å fjerne variabelen etter tester 
+        //Lage to knapper på samme sted 
+        const doneBtn = document.getElementById("doneBtn")
+        const todoBtn = document.getElementsByClassName("task-status-todo")
+    
+        for (var i = 0; i < todoBtn.length; i++) { //Se vedlagt dokument for kilde linje 182
+        todoBtn[i].addEventListener('click', todoclick);
+        }  
+
+        
+        function todoclick(){
+            console.log("todo funker")
+            todos.status = "Done"
+        }
+
+        //doneBtn.disabled = true
+
+        console.log(todos)
+
+        
+
+    //Lage fungerende knapper
+   /*
+
+    let todoStat = todos.filter(todostat => todostat.status === "To do")
+    let doneStat = todos.filter(todostat => todostat.status === "Done")
+    console.log(todoStat) //Husk å fjerne variabelen etter tester 
+    console.log(doneStat)
 
     function todoclick(){
         console.log("knappen funker!")
-        if(todostat === true){ //Funker ikke enda 
+        if(todostat){ //Funker ikke enda 
             //todos.map(todo => todo.status= "Done")
             console.log("if testen funker")
         }
 
-        /*todos.map(todo => todo.status= "Done")*/
+        /*todos.map(todo => todo.status= "Done")
         
         
     }
-
+*/
   
     
         
