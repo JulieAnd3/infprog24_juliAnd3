@@ -42,6 +42,68 @@
 
         /* --- YOUR FUNCTIONALITY AND CODE GOES HERE --- */
         
+        let listColor = [""] //En array hvor fargekodene lagres. Kan hende jeg må fjerne.
+       
+        //Variabler for knappene:
+        const addColorbtn = document.getElementById("addColor")
+        const emptyArraybtn = document.getElementById("emptyArratbtn")
+        const generateAllbtn = document.getElementById("generateAll")
+        const saveNewColorbtn = document.getElementById("saveNewColor")
+        
+        //Variabler for minste og største verdien 
+        const min = 0
+        const maxNum = 9
+        const maxLet = 5
+
+      
+        let ranNumb = ""
+        let ranNumbLet = ""
+        let ranLet = ""
+      
+
+        addColorbtn.addEventListener("click", randomColor)
+
+        function randomColor(){
+            console.log("knappen funker")
+            //For å finne tilfeldig tall
+            ranNumb = Math.floor(Math.random() * ((maxNum - min + 1)+ min))
+            
+
+            //For å finne tilfeldig tall
+            ranNumbLet = Math.floor(Math.random() * ((maxLet - min + 1)+ min))
+            if(ranNumbLet === 0){
+                ranLet = "a"
+            } else if(ranNumbLet === 1){
+                ranLet = "b"
+            } else if(ranNumbLet === 2){
+                ranLet = "c"
+            } else if(ranNumbLet === 3){
+                ranLet = "d"
+            } else if(ranNumbLet === 4){
+                ranLet = "e"
+            } else if(ranNumbLet === 5){
+                ranLet = "f"
+            }
+            
+            for(let counter = 0; counter >= 6; counter++){ //Noe som gjør at den ikke funker. 
+                    randomplacement()
+                    console.log(counter)
+                }
+
+            //Tilfeldig plassering av tall og bokstaver 
+            function randomplacement(){
+                const randomplace = Math.random()
+                if(randomplace > 0.5){
+                    listColor += ranLet 
+                } else{
+                    listColor += ranNumb
+                }
+    
+                return listColor
+            }
+            //console.log(listColor)
+        }
+
 
         //requestAnimationFrame
         const requestAnimationFrame = window.requestAnimationFrame || window.msRequestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame
