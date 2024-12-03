@@ -121,8 +121,7 @@
                 const todovalue = document.getElementById("task").value
                 todos.push({text: todovalue, status: "To do"})
                 document.getElementById("todolist").innerHTML += `<li><span>${todovalue}</span>
-                    <span class="task-status task-status-todo">${todo}</span>
-                    </li> `
+                    <button class="task-status task-status-todo">${todo}</button> `
                 document.getElementById("task").value = "" //Kilde. Se vedlagt dokument. Linje 101
                 }   
         }
@@ -178,20 +177,25 @@ showTime();
     
 
         //Lage to knapper på samme sted 
-        const doneBtn = document.getElementById("doneBtn")
+        const doneBtn = document.getElementsByClassName("task-status-done")
         const todoBtn = document.getElementsByClassName("task-status-todo")
     
         for (var i = 0; i < todoBtn.length; i++) { //Se vedlagt dokument for kilde linje 182
         todoBtn[i].addEventListener('click', todoclick);
         }  
-
+        for (var i = 0; i < doneBtn.length; i++) { //Se vedlagt dokument for kilde linje 182
+        doneBtn[i].addEventListener('click', doneclick);
+        }  
         
         function todoclick(){
             console.log("todo funker")
             todos.status = "Done"
         }
 
-        //doneBtn.disabled = true
+        function doneclick(){
+            doneBtn.disabled = true
+        }
+        
 
         console.log(todos)
 
