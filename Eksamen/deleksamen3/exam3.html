@@ -42,8 +42,10 @@
 
         /* --- YOUR FUNCTIONALITY AND CODE GOES HERE --- */
         
-        let listColor = [""] //En array hvor fargekodene lagres. Kan hende jeg må fjerne.
-       
+        let listColor = "#"
+        let colorArray = []
+        // document.getElementById("colorSquareIndex").innerHTML += `<option value="0">#${listColor}</option>`
+
         //Variabler for knappene:
         const addColorbtn = document.getElementById("addColor")
         const emptyArraybtn = document.getElementById("emptyArratbtn")
@@ -55,16 +57,20 @@
         const maxNum = 9
         const maxLet = 5
 
-      
+        //Midlertidige varibaler for enklere kode
         let ranNumb = ""
         let ranNumbLet = ""
         let ranLet = ""
       
-
+    
         addColorbtn.addEventListener("click", randomColor)
 
+        if(colorArray.lenght <= 10){
+            addColorbtn.disabeld = true
+            console.log("det var nok farger kompis")
+        }
+
         function randomColor(){
-            console.log("knappen funker")
             //For å finne tilfeldig tall
             ranNumb = Math.floor(Math.random() * ((maxNum - min + 1)+ min))
             
@@ -84,26 +90,21 @@
             } else if(ranNumbLet === 5){
                 ranLet = "f"
             }
-            
-            for(let counter = 0; counter >= 6; counter++){ //Noe som gjør at den ikke funker. 
-                    randomplacement()
-                    console.log(counter)
-                }
 
-            //Tilfeldig plassering av tall og bokstaver 
-            function randomplacement(){
+             //Tilfeldig plassering av tall og bokstaver som går flere 6 runder 
+            for(let teller = 1; teller <= 6; teller++) {        
                 const randomplace = Math.random()
                 if(randomplace > 0.5){
                     listColor += ranLet 
                 } else{
                     listColor += ranNumb
                 }
-    
-                return listColor
             }
-            //console.log(listColor)
+            return colorArray.push(listColor)
+            listColor = "#" //For å fjerne det koden lagde forrige runde
         }
-
+        console.log(colorArray)
+        
 
         //requestAnimationFrame
         const requestAnimationFrame = window.requestAnimationFrame || window.msRequestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame
