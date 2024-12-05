@@ -42,8 +42,6 @@
 
         /* --- YOUR FUNCTIONALITY AND CODE GOES HERE --- */
         
-        let listColor = "#"
-        let colorArray = []
         // document.getElementById("colorSquareIndex").innerHTML += `<option value="0">#${listColor}</option>`
 
         //Variabler for knappene:
@@ -61,16 +59,26 @@
         let ranNumb = ""
         let ranNumbLet = ""
         let ranLet = ""
-      
-    
-        addColorbtn.addEventListener("click", randomColor)
 
-        if(colorArray.lenght <= 10){
-            addColorbtn.disabeld = true
-            console.log("det var nok farger kompis")
-        }
+        //Variabel for lagring av resultater:
+            let listColor = "#"
+
+        //Arrayen der alt skal ligge 
+        let colorArray = [] 
+    
+        addColorbtn.addEventListener("click", () => { //Se dokument linje 69-72 for kilde
+            randomColor()
+            console.log(colorArray) 
+        })
+
 
         function randomColor(){
+            //Den skrur av knappen når arrayen er full
+            if(colorArray.length >= 9){ //Se dokument linje 77. If test for å skru av knapp
+            addColorbtn.disabled = true
+            console.log("det var nok farger kompis")
+            }
+
             //For å finne tilfeldig tall
             ranNumb = Math.floor(Math.random() * ((maxNum - min + 1)+ min))
             
@@ -100,10 +108,10 @@
                     listColor += ranNumb
                 }
             }
-            return colorArray.push(listColor)
+            colorArray.push(listColor)
             listColor = "#" //For å fjerne det koden lagde forrige runde
         }
-        console.log(colorArray)
+
         
 
         //requestAnimationFrame
