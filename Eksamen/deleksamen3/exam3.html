@@ -46,7 +46,7 @@
 
         //Variabler for knappene:
         const addColorbtn = document.getElementById("addColor")
-        const emptyArraybtn = document.getElementById("emptyArratbtn")
+        const emptyArraybtn = document.getElementById("emptyArray")
         const generateAllbtn = document.getElementById("generateAll")
         const saveNewColorbtn = document.getElementById("saveNewColor")
         
@@ -71,11 +71,20 @@
             console.log(colorArray) 
         })
 
+        emptyArraybtn.addEventListener("click", () => { 
+            clearAll()
+            addColorbtn.disabled = false
+        })
+        generateAllbtn.addEventListener("click", () => {
+            console.log("10 knapp funker")
+            tenColors()
+        
+        })
         function randomColor(){
             //Den skrur av knappen når arrayen er full
             if(colorArray.length >= 9){ //Se dokument linje 77. If test for å skru av knapp
             addColorbtn.disabled = true
-            console.log("det var nok farger kompis")
+            console.log("det var nok farger kompis") //vurderer å flytte på den her
             }
 
             //For å finne tilfeldig tall
@@ -171,12 +180,12 @@
 
             //Nummerboks 
             ctx.beginPath()
-            ctx.rect(colorX + 80, 80, 20, 20)
+            ctx.rect(colorX + 79, 80, 21, 20)
             ctx.fillStyle = "white"
             ctx.fill()
             ctx.font = "18px Arial"
             ctx.fillStyle = colorArray[indexVar] 
-            ctx.fillText(number, colorX + 85, 95) //forandre så det står etter riktig tall
+            ctx.fillText(number, colorX + 80, 95) //forandre så det står etter riktig tall
             ctx.closePath()
 
             //Fargekodeboks
@@ -188,7 +197,20 @@
             ctx.fillStyle = "#000000"
             ctx.fillText(colorArray[indexVar], colorX + 5, 15)
             ctx.closePath()
-        }        
+        }    
+        
+        function clearAll(){
+            colorArray = []
+            ctx.clearRect(0, 0, 1000, 100)
+        }
+        function tenColors(){
+            ctx.clearRect(0, 0, 100, 100)
+            colorArray = []
+            for(let teller = 1; teller <= 10; teller++){
+                randomColor()
+                console.log(colorArray)
+            }
+        }
 
         //requestAnimationFrame
         const requestAnimationFrame = window.requestAnimationFrame || window.msRequestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame
@@ -196,7 +218,7 @@
             requestAnimationFrame(renderCanvas)
         }
 
-
+        
         //Initial running of drawing canvas
         renderCanvas()
     </script>
