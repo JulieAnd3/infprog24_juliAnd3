@@ -18,7 +18,7 @@
         <h2>Endre farger:</h2>
         <section>
             <p>Bytt ut fargen i rute <select id="colorSquareIndex">
-                <option value="0">1</option>
+                <option value="0" >1</option>
                 <option value="1">2</option>
                 <option value="2">3</option>
                 <option value="3">4</option>
@@ -42,13 +42,14 @@
 
         /* --- YOUR FUNCTIONALITY AND CODE GOES HERE --- */
         
-        // document.getElementById("colorSquareIndex").innerHTML += `<option value="0">#${listColor}</option>`
+       
 
         //Variabler for knappene:
         const addColorbtn = document.getElementById("addColor")
         const emptyArraybtn = document.getElementById("emptyArray")
         const generateAllbtn = document.getElementById("generateAll")
         const saveNewColorbtn = document.getElementById("saveNewColor")
+        const inputColor = document.getElementById("saveNewColor")
         
         //Variabler for minste og største verdien 
         const min = 0
@@ -65,7 +66,8 @@
 
         //Arrayen der alt skal ligge 
         let colorArray = [] 
-    
+        
+        //Alle knappene
         addColorbtn.addEventListener("click", () => { //Se dokument linje 69-72 for kilde
             randomColor()
             console.log(colorArray) 
@@ -80,6 +82,10 @@
             tenColors()
         
         })
+        inputColor.addEventListener("click", () =>{
+            changeOneColor()
+        })
+
         function randomColor(){
             //Den skrur av knappen når arrayen er full
             if(colorArray.length >= 9){ //Se dokument linje 77. If test for å skru av knapp
@@ -122,59 +128,73 @@
             drawRandomColor()
         }
 
-        function drawRandomColor(){
             //Variabler som forandrer seg 
             let indexVar = ""
             let colorX = ""
             let number = ""
+            let theColor = ""
 
+        function drawRandomColor(){
             //If test for å få rikitg verdier til variabelene 
            if(colorArray.length === 1){
                 indexVar = 0
                 colorX = 0
                 number = 1
+                theColor = colorArray[indexVar]
             } else if(colorArray.length === 2){
                 indexVar = 1
                 colorX = 100
                 number = 2
+                theColor = colorArray[indexVar]
             } else if(colorArray.length === 3){
                 indexVar = 2
                 colorX = 200
                 number = 3
+                theColor = colorArray[indexVar]
             }else if(colorArray.length === 4){
                 indexVar = 3
                 colorX = 300
                 number = 4
+                theColor = colorArray[indexVar]
             }else if(colorArray.length === 5){
                 indexVar = 4
                 colorX = 400
                 number = 5
+                theColor = colorArray[indexVar]
             }else if(colorArray.length === 6){
                 indexVar = 5
                 colorX = 500
                 number = 6
+                theColor = colorArray[indexVar]
             }else if(colorArray.length === 7){
                 indexVar = 6
                 colorX = 600
                 number = 7
+                theColor = colorArray[indexVar]
             }else if(colorArray.length === 8){
                 indexVar = 7
                 colorX = 700
                 number = 8
+                theColor = colorArray[indexVar]
             }else if(colorArray.length === 9){
                 indexVar = 8
                 colorX = 800
                 number = 9
+                theColor = colorArray[indexVar]
             }else if(colorArray.length === 10){
                 indexVar = 9
                 colorX = 900
                 number = 10
+                theColor = colorArray[indexVar]
             }
 
+            draw()
+        } 
+        function draw(){
             //Firkant 
             ctx.beginPath()
             ctx.rect(colorX, 0 , 100, 100) //ha noe på koordinatene så den kan tegne ut bortover
-            ctx.fillStyle = colorArray[indexVar]//Her skal fargekoden komme 
+            ctx.fillStyle = theColor//Her skal fargekoden komme 
             ctx.fill()
             ctx.closePath() 
 
@@ -184,7 +204,7 @@
             ctx.fillStyle = "white"
             ctx.fill()
             ctx.font = "18px Arial"
-            ctx.fillStyle = colorArray[indexVar] 
+            ctx.fillStyle = theColor
             ctx.fillText(number, colorX + 80, 95) //forandre så det står etter riktig tall
             ctx.closePath()
 
@@ -195,22 +215,99 @@
             ctx.fill()
             ctx.font = "14px Arial"
             ctx.fillStyle = "#000000"
-            ctx.fillText(colorArray[indexVar], colorX + 5, 15)
+            ctx.fillText( theColor, colorX + 5, 15)
             ctx.closePath()
-        }    
+        }   
         
         function clearAll(){
             colorArray = []
             ctx.clearRect(0, 0, 1000, 100)
         }
         function tenColors(){
-            ctx.clearRect(0, 0, 100, 100)
+            ctx.clearRect(0, 0, 1000, 100)
             colorArray = []
             for(let teller = 1; teller <= 10; teller++){
                 randomColor()
                 console.log(colorArray)
             }
         }
+        let userValue = document.getElementById("newColor")
+        let optionTest = document.getElementById("colorSquareIndex")
+
+        function changeOneColor(){
+            userValue = `#${userValue.value}` //for inputen til brukeren 
+            optionTest = optionTest.value //for hvilken firkant brukeren velger
+
+            if(optionTest == 0){ //PROBLEM: testen funker bare en gang 
+                colorX = 0
+                number = 1
+                theColor = userValue
+                colorArray[0] = userValue
+            } else if(optionTest == 1){
+                colorX = 100
+                number = 2
+                theColor = userValue
+                colorArray[1] = userValue
+            }
+            else if(optionTest == 2){
+                colorX = 200
+                number = 3
+                theColor = userValue
+                colorArray[2] = userValue
+            }
+            else if(optionTest == 3){
+                colorX = 300
+                number = 4
+                theColor = userValue
+                colorArray[3] = userValue
+            }
+            else if(optionTest == 4){
+                colorX = 400
+                number = 5
+                theColor = userValue
+                colorArray[4] = userValue
+            }
+            else if(optionTest == 5){
+                colorX = 500
+                number = 6
+                theColor = userValue
+                colorArray[5] = userValue
+            }
+            else if(optionTest == 6){
+                colorX = 600
+                number = 7
+                theColor = userValue
+                colorArray[6] = userValue
+            }
+            else if(optionTest == 7){
+                colorX = 700
+                number = 8
+                theColor = userValue
+                colorArray[7] = userValue
+            }
+            else if(optionTest == 8){
+                colorX = 800
+                number = 9
+                theColor = userValue
+                colorArray[8] = userValue
+            }
+            else if(optionTest == 9){
+                colorX = 900
+                number = 10
+                theColor = userValue
+                colorArray[9] = userValue
+            }
+
+            ctx.clearRect(colorX, 0, 100, 100) //Fjerner rikitg firkant for å kunne tegne ny
+            draw() //Setter i gang tegningen av ny firkant
+
+
+            console.log(userValue)
+            console.log(optionTest) 
+        }
+
+        
+       
 
         //requestAnimationFrame
         const requestAnimationFrame = window.requestAnimationFrame || window.msRequestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame
@@ -218,7 +315,7 @@
             requestAnimationFrame(renderCanvas)
         }
 
-        
+     
         //Initial running of drawing canvas
         renderCanvas()
     </script>
