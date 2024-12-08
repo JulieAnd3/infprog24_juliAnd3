@@ -234,11 +234,12 @@
         let userValue = document.getElementById("newColor")
         let optionTest = document.getElementById("colorSquareIndex")
 
-        function changeOneColor(){
-            userValue = `#${userValue.value}` //for inputen til brukeren 
+        
+        function changeOneColor(){   //Prøvc åg lage en loop?
             optionTest = optionTest.value //for hvilken firkant brukeren velger
-
-            if(optionTest == 0){ //PROBLEM: testen funker bare en gang 
+            userValue = `#${userValue.value}` //for inputen til brukeren 
+                      
+            if(optionTest == 0){ 
                 colorX = 0
                 number = 1
                 theColor = userValue
@@ -301,7 +302,8 @@
             ctx.clearRect(colorX, 0, 100, 100) //Fjerner rikitg firkant for å kunne tegne ny
             draw() //Setter i gang tegningen av ny firkant
 
-
+            optionTest = ""
+            userValue = ""
             console.log(userValue)
             console.log(optionTest) 
         }
