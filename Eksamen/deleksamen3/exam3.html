@@ -231,68 +231,72 @@
                 console.log(colorArray)
             }
         }
-        let userValue = document.getElementById("newColor")
+        let userTest = document.getElementById("newColor")
         let optionTest = document.getElementById("colorSquareIndex")
+        let optionValue = ""
+        let userValue = ""
 
         
-        function changeOneColor(){   //Prøvc åg lage en loop?
-            optionTest = optionTest.value //for hvilken firkant brukeren velger
-            userValue = `#${userValue.value}` //for inputen til brukeren 
-                      
-            if(optionTest == 0){ 
+        function changeOneColor(){   //Prøvc å lage en loop?
+           
+           optionValue = optionTest.value //for hvilken firkant brukeren velger
+            userValue = `#${userTest.value}` //for inputen til brukeren 
+           
+    
+            if(optionValue == 0){ 
                 colorX = 0
                 number = 1
                 theColor = userValue
                 colorArray[0] = userValue
-            } else if(optionTest == 1){
+            } else if(optionValue == 1){
                 colorX = 100
                 number = 2
                 theColor = userValue
                 colorArray[1] = userValue
             }
-            else if(optionTest == 2){
+            else if(optionValue == 2){
                 colorX = 200
                 number = 3
                 theColor = userValue
                 colorArray[2] = userValue
             }
-            else if(optionTest == 3){
+            else if(optionValue == 3){
                 colorX = 300
                 number = 4
                 theColor = userValue
                 colorArray[3] = userValue
             }
-            else if(optionTest == 4){
+            else if(optionValue == 4){
                 colorX = 400
                 number = 5
                 theColor = userValue
                 colorArray[4] = userValue
             }
-            else if(optionTest == 5){
+            else if(optionValue == 5){
                 colorX = 500
                 number = 6
                 theColor = userValue
                 colorArray[5] = userValue
             }
-            else if(optionTest == 6){
+            else if(optionValue == 6){
                 colorX = 600
                 number = 7
                 theColor = userValue
                 colorArray[6] = userValue
             }
-            else if(optionTest == 7){
+            else if(optionValue == 7){
                 colorX = 700
                 number = 8
                 theColor = userValue
                 colorArray[7] = userValue
             }
-            else if(optionTest == 8){
+            else if(optionValue == 8){
                 colorX = 800
                 number = 9
                 theColor = userValue
                 colorArray[8] = userValue
             }
-            else if(optionTest == 9){
+            else if(optionValue == 9){
                 colorX = 900
                 number = 10
                 theColor = userValue
@@ -302,8 +306,6 @@
             ctx.clearRect(colorX, 0, 100, 100) //Fjerner rikitg firkant for å kunne tegne ny
             draw() //Setter i gang tegningen av ny firkant
 
-            optionTest = ""
-            userValue = ""
             console.log(userValue)
             console.log(optionTest) 
         }
