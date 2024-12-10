@@ -66,11 +66,11 @@
 
         //Arrayen der alt skal ligge 
         let colorArray = [] 
-        
+  
         //Alle knappene
         addColorbtn.addEventListener("click", () => { //Se dokument linje 69-72 for kilde
             randomColor()
-            console.log(colorArray) 
+            //console.log(colorArray) 
         })
 
         emptyArraybtn.addEventListener("click", () => { 
@@ -141,6 +141,7 @@
                 colorX = 0
                 number = 1
                 theColor = colorArray[indexVar]
+            
             } else if(colorArray.length === 2){
                 indexVar = 1
                 colorX = 100
@@ -235,15 +236,88 @@
         let optionTest = document.getElementById("colorSquareIndex")
         let optionValue = ""
         let userValue = ""
+        
+        //Variabler for kravene for at brukeren skal få lov til å tegne
+        let inputThere = false 
+        let colorThere = false
+        let codeRight = false 
+        
+        function changeOneColor(){   
+            optionValue = optionTest.value //for hvilken firkant brukeren velger
+            userValue = `#${userTest.value}` //for inputen til brukeren 
+
+            /*
+            if(colorArray.length === 0 && optionValue == 0){
+                alert("Du har valgt firkant 1. Denne har ikke en farge enda, og kan derfor ikke byttes. Du har ikke lagt til noen farger og kan derfor ikke endre på noen av dem")
+                console.log("ingen i rute 1")
+                colorThere = false 
+            }
+            else if(colorArray.length === 1 && optionValue == 2){
+                alert("Du har valgt firkant 2. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
+                console.log("ingen i rute 2")
+                colorThere = false 
+            } 
+            else if(colorArray.length === 2 && optionValue == 3){
+                alert("Du har valgt firkant 3. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
+                console.log("ingen i rute 3")
+                colorThere = false 
+            } 
+            else if(colorArray.length === 3 && optionValue == 4){
+                alert("Du har valgt firkant 4. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
+                console.log("ingen i rute 4")
+                colorThere = false 
+            } 
+            else if(colorArray.length === 4 && optionValue == 4){
+                alert("Du har valgt firkant 5. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
+            } 
+            else if(colorArray.length === 5 && optionValue == 5){
+                alert("Du har valgt firkant 6. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
+            } 
+            else if(colorArray.length === 6 && optionValue == 6){
+                alert("Du har valgt firkant 7. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
+            } 
+            else if(colorArray.length === 7 && optionValue == 7){
+                alert("Du har valgt firkant 8. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
+            } 
+            else if(colorArray.length === 8 && optionValue == 8){
+                alert("Du har valgt firkant 9. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
+            } 
+            else if(colorArray.length === 9 && optionValue == 9){
+                alert("Du har valgt firkant 10. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
+            } 
+            else{
+                colorThere = true 
+            }
+            */
+            
+          if(userValue === "#"){ //når brukeren ikke har skrevet noe 
+                alert("Du har ikke skrevet noen fargekode enda")
+            } else{
+                inputThere = true
+            }
+
+        let valueLength = userValue.length //variabel for å se på lengden
+        console.log(userValue)
+        if(valueLength === 7){ 
+            codeRight = true
+        }
+ 
+
+            console.log(valueLength)     
+            /*console.log("color " + colorThere)
+            console.log("there " + inputThere)*/
 
         
-        function changeOneColor(){   //Prøvc å lage en loop?
-           
-           optionValue = optionTest.value //for hvilken firkant brukeren velger
-            userValue = `#${userTest.value}` //for inputen til brukeren 
-           
-    
-            if(optionValue == 0){ 
+            if(inputThere === true && codeRight === true){ //Test som ser om alle kravene er fullført. colorThere === true
+                console.log("tegningen kjører")
+                drawingNewColor()
+                /*inputThere = false
+                console.log("color " + colorThere)
+                console.log("there " + inputThere)*/
+            } 
+     
+            function drawingNewColor(){
+                if(optionValue == 0){ 
                 colorX = 0
                 number = 1
                 theColor = userValue
@@ -305,9 +379,7 @@
 
             ctx.clearRect(colorX, 0, 100, 100) //Fjerner rikitg firkant for å kunne tegne ny
             draw() //Setter i gang tegningen av ny firkant
-
-            console.log(userValue)
-            console.log(optionTest) 
+           }
         }
 
         
