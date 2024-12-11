@@ -241,11 +241,12 @@
         let inputThere = false 
         let colorThere = false
         let codeRight = false 
+        let codeLenght = false 
         
         function changeOneColor(){   
             optionValue = optionTest.value //for hvilken firkant brukeren velger
             userValue = `#${userTest.value}` //for inputen til brukeren 
-
+            //De må være flere forskjellige tester og ikke en sammenhengende test 
             /*
             if(colorArray.length === 0 && optionValue == 0){
                 alert("Du har valgt firkant 1. Denne har ikke en farge enda, og kan derfor ikke byttes. Du har ikke lagt til noen farger og kan derfor ikke endre på noen av dem")
@@ -290,16 +291,63 @@
             }
             */
             
-          if(userValue === "#"){ //når brukeren ikke har skrevet noe 
+        if(userValue === "#"){ //når brukeren ikke har skrevet noe 
                 alert("Du har ikke skrevet noen fargekode enda")
             } else{
                 inputThere = true
             }
 
+        //Variabeler for å sjekke hver bokstav. Se for kilde i dokument Linje 300
+        let firstLet = userValue.charAt(1)   
+            let secLet = userValue.charAt(2)
+            let thridLet = userValue.charAt(3)
+            let fourthLet = userValue.charAt(4)
+            let fithLet = userValue.charAt(5)
+            let sixLet = userValue.charAt(6)
+
+            //Boolean variabler som må være aktivert for at koden skal funke. 
+            let firstLetStat = false 
+            let secLetStat = false 
+            let thridLetStat = false 
+            let fourthLetStat = false 
+            let fithLetStat = false 
+            let sixLetStat = false 
+            
+            //Test for å se om hver plass inneholder rikitig karakterer
+            if(firstLet == "a" || firstLet == "b" || firstLet == "c" || firstLet == "d" || firstLet == "e" || firstLet == "f" || firstLet == "0" || firstLet == "1" || firstLet == "2" || firstLet == "3" || firstLet == "4" || firstLet == "5" || firstLet == "6" || firstLet == "7" || firstLet == "8" ||  firstLet == "9"){
+                firstLetStat = true 
+            }
+            if(secLet == "a" || secLet == "b" || secLet == "c" || secLet == "d" || secLet == "e" || secLet == "f" || secLet == "0" || secLet == "1" || secLet == "2" || secLet == "3" || secLet == "4" || secLet == "5" || secLet == "6" || secLet == "7" || secLet == "8" ||  secLet == "9"){
+                secLetStat = true
+            }
+            if(thridLet == "a" || thridLet == "b" || thridLet == "c" || thridLet == "d" || thridLet== "e" || thridLet == "f" || thridLet== "0" || thridLet == "1" || thridLet== "2" || thridLet == "3" || thridLet == "4" || thridLet == "5" || thridLet == "6" || thridLet == "7" || thridLet == "8" || thridLet == "9"){
+                thridLetStat = true
+            }
+            if(fourthLet == "a" || fourthLet== "b" || fourthLet == "c" || fourthLet == "d" || fourthLet == "e" || fourthLet == "f" || fourthLet == "0" || fourthLet == "1" || fourthLet == "2" || fourthLet == "3" || fourthLet == "4" || fourthLet == "5" || fourthLet == "6" || fourthLet == "7" || fourthLet == "8" || fourthLet == "9"){
+                fourthLetStat = true
+            }
+            if(fithLet == "a" || fithLet == "b" || fithLet == "c" || fithLet == "d" || fithLet == "e" || fithLet == "f" || fithLet == "0" || fithLet == "1" || fithLet == "2" || fithLet == "3" || fithLet == "4" || fithLet == "5" || fithLet == "6" || fithLet == "7" || tfithLet == "8" || fithLet== "9"){
+                fithLetStat = true
+            }
+            if(sixLet  == "a" || sixLet  == "b" || sixLet == "c" || sixLet == "d" || sixLet == "e" || sixLet  == "f" || sixLet == "0" || sixLet  == "1" || sixLet  == "2" || sixLet == "3" || sixLet  == "4" || sixLet  == "5" || sixLet  == "6" || sixLet == "7" || sixLet  == "8" || sixLet  == "9"){
+                sixLetStat = true
+            }
+
+            if(firstLetStat === true && secLetStat === true && thridLetStat === true && fourthLetStat === true && fithLetStat === true && sixLetStat === true){
+                codeRight = true
+            } else{
+                alert(`«Du har skrevet ${userValue}. Dette er ikke en gyldig fargekode.»`)
+            }
+
         let valueLength = userValue.length //variabel for å se på lengden
         console.log(userValue)
+        //se om hvert sted har en av bokstavene og trykk ned en knapp?
+        
+    
         if(valueLength === 7){ 
-            codeRight = true
+            codeLenght = true 
+        } else{
+            alert(`«Du har skrevet ${userValue}. Dette er ikke en gyldig fargekode.»`)
         }
  
 
@@ -308,7 +356,7 @@
             console.log("there " + inputThere)*/
 
         
-            if(inputThere === true && codeRight === true){ //Test som ser om alle kravene er fullført. colorThere === true
+            if(inputThere === true && codeRight === true && codeLenght === true){ //Test som ser om alle kravene er fullført. colorThere === true
                 console.log("tegningen kjører")
                 drawingNewColor()
                 /*inputThere = false
