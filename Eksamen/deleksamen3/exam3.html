@@ -134,6 +134,19 @@
             let number = ""
             let theColor = ""
 
+            //test 
+            let color1 = false
+            let color2 = false
+            let color3 = false 
+            let color4 = false 
+            let color5 = false 
+            let color6 = false
+            let color7 = false 
+            let color8 = false
+            let color9 = false 
+            let color10 = false 
+
+
         function drawRandomColor(){
             //If test for å få rikitg verdier til variabelene 
            if(colorArray.length === 1){
@@ -141,52 +154,62 @@
                 colorX = 0
                 number = 1
                 theColor = colorArray[indexVar]
+                color1 = true
             
             } else if(colorArray.length === 2){
                 indexVar = 1
                 colorX = 100
                 number = 2
                 theColor = colorArray[indexVar]
+                color2 = true 
             } else if(colorArray.length === 3){
                 indexVar = 2
                 colorX = 200
                 number = 3
                 theColor = colorArray[indexVar]
+                color3 = true
             }else if(colorArray.length === 4){
                 indexVar = 3
                 colorX = 300
                 number = 4
                 theColor = colorArray[indexVar]
+                color4 = true 
             }else if(colorArray.length === 5){
                 indexVar = 4
                 colorX = 400
                 number = 5
                 theColor = colorArray[indexVar]
+                color5 = true
             }else if(colorArray.length === 6){
                 indexVar = 5
                 colorX = 500
                 number = 6
                 theColor = colorArray[indexVar]
+                color6 = true 
             }else if(colorArray.length === 7){
                 indexVar = 6
                 colorX = 600
                 number = 7
                 theColor = colorArray[indexVar]
+                color7 = true
             }else if(colorArray.length === 8){
                 indexVar = 7
                 colorX = 700
                 number = 8
                 theColor = colorArray[indexVar]
+                color8 = true 
             }else if(colorArray.length === 9){
                 indexVar = 8
                 colorX = 800
                 number = 9
                 theColor = colorArray[indexVar]
+                color9 = true
             }else if(colorArray.length === 10){
                 indexVar = 9
                 colorX = 900
                 number = 10
                 theColor = colorArray[indexVar]
+                color10 = true 
             }
 
             draw()
@@ -223,6 +246,10 @@
         function clearAll(){
             colorArray = []
             ctx.clearRect(0, 0, 1000, 100)
+            inputThere = false
+            codeRight = false 
+            codeLenght = false  
+            colorThere = false
         }
         function tenColors(){
             ctx.clearRect(0, 0, 1000, 100)
@@ -236,6 +263,7 @@
         let optionTest = document.getElementById("colorSquareIndex")
         let optionValue = ""
         let userValue = ""
+        let placeNumber = ""
         
         //Variabler for kravene for at brukeren skal få lov til å tegne
         let inputThere = false 
@@ -246,50 +274,78 @@
         function changeOneColor(){   
             optionValue = optionTest.value //for hvilken firkant brukeren velger
             userValue = `#${userTest.value}` //for inputen til brukeren 
-            //De må være flere forskjellige tester og ikke en sammenhengende test 
-            /*
-            if(colorArray.length === 0 && optionValue == 0){
-                alert("Du har valgt firkant 1. Denne har ikke en farge enda, og kan derfor ikke byttes. Du har ikke lagt til noen farger og kan derfor ikke endre på noen av dem")
-                console.log("ingen i rute 1")
-                colorThere = false 
-            }
-            else if(colorArray.length === 1 && optionValue == 2){
-                alert("Du har valgt firkant 2. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
-                console.log("ingen i rute 2")
-                colorThere = false 
+           
+            let color1Stat = true 
+            let color2Stat = true 
+            let color3Stat = true 
+            let color4Stat = true 
+            let color5Stat = true 
+            let color6Stat = true 
+            let color7Stat = true 
+            let color8Stat = true 
+            let color9Stat = true 
+            let color10Stat = true 
+            
+            //colorArray.length === 0
+            if(optionValue == 0 && color1 === false){
+                //alert("Du har valgt firkant 1. Denne har ikke en farge enda, og kan derfor ikke byttes. Du har ikke lagt til noen farger og kan derfor ikke endre på noen av dem")
+                placeNumber = 1 
+                alertFunc()
+                color1Stat = false
             } 
-            else if(colorArray.length === 2 && optionValue == 3){
-                alert("Du har valgt firkant 3. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
-                console.log("ingen i rute 3")
-                colorThere = false 
+            if(optionValue == 1 && color2 === false ){
+                //alert(`Du har valgt firkant 2. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til ${colorArray.length}`)
+                placeNumber = 2
+                alertFunc()
+                color2Stat = false 
             } 
-            else if(colorArray.length === 3 && optionValue == 4){
-                alert("Du har valgt firkant 4. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
-                console.log("ingen i rute 4")
-                colorThere = false 
+             if(optionValue == 2 && color3 === false ){
+                placeNumber = 3
+                alertFunc()
+                color3Stat = false 
             } 
-            else if(colorArray.length === 4 && optionValue == 4){
-                alert("Du har valgt firkant 5. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
+            if(optionValue == 3 && color4 === false){
+                placeNumber = 4
+                alertFunc()
+                color4Stat = false 
             } 
-            else if(colorArray.length === 5 && optionValue == 5){
-                alert("Du har valgt firkant 6. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
+            if(optionValue == 4 && color5 === false){
+                placeNumber = 5
+                alertFunc()
+                color5Stat = false 
             } 
-            else if(colorArray.length === 6 && optionValue == 6){
-                alert("Du har valgt firkant 7. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
+             if(optionValue == 5 && color6 === false){
+                placeNumber = 6
+                alertFunc()
+                color6Stat = false 
             } 
-            else if(colorArray.length === 7 && optionValue == 7){
-                alert("Du har valgt firkant 8. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
+            if(optionValue == 6 && color7 === false){
+                placeNumber = 7
+                alertFunc()
+                color7Stat = false 
             } 
-            else if(colorArray.length === 8 && optionValue == 8){
-                alert("Du har valgt firkant 9. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
+            if(optionValue == 7 && color8 === false){
+                placeNumber = 8
+                alertFunc()
+                color8Stat = false 
             } 
-            else if(colorArray.length === 9 && optionValue == 9){
-                alert("Du har valgt firkant 10. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til Z")
+            if(optionValue == 8 && color9 === false){
+                placeNumber = 9
+                alertFunc()
+                color9Stat = false 
             } 
-            else{
-                colorThere = true 
-            }
-            */
+            if(optionValue == 9 && color10 === false){
+                placeNumber = 10
+                alertFunc()
+                color10Stat = false 
+            } 
+
+            
+            
+        if(color1Stat === true && color2Stat === true && color3Stat === true && color4Stat === true && color5Stat === true && color6Stat === true && color7Stat === true && color8Stat === true && color9Stat === true && color10Stat === true ){
+            colorThere = true 
+        }
+           
             
         if(userValue === "#"){ //når brukeren ikke har skrevet noe 
                 alert("Du har ikke skrevet noen fargekode enda")
@@ -356,7 +412,7 @@
             console.log("there " + inputThere)*/
 
         
-            if(inputThere === true && codeRight === true && codeLenght === true){ //Test som ser om alle kravene er fullført. colorThere === true
+            if(inputThere === true && codeRight === true && codeLenght === true && colorThere === true){ //Test som ser om alle kravene er fullført. 
                 console.log("tegningen kjører")
                 drawingNewColor()
                 /*inputThere = false
@@ -432,7 +488,40 @@
 
         
        
-
+        function alertFunc(){
+            console.log("funksjonen kjører")
+            console.log(colorArray.length)
+            if(colorArray.length == 0){
+                alert(`Du har valgt firkant ${placeNumber}. Denne har ikke en farge enda, og kan derfor ikke byttes. Du har ikke lagt til noen farger og kan derfor ikke endre på noen av dem`)
+            }
+            if(colorArray.length == 2){
+                alert(`Du har valgt firkant ${placeNumber}. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant 1 til 2`)
+            }
+            if(colorArray.length == 3){
+                alert(`Du har valgt firkant ${placeNumber}. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant 1 til 3`)
+            }
+            if(colorArray.length == 4){
+                alert(`Du har valgt firkant ${placeNumber}. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant 1 til 4`)
+            }
+            if(colorArray.length == 5){
+                alert(`Du har valgt firkant ${placeNumber}. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant 1 til 5`)
+            }
+            if(colorArray.length == 6){
+                alert(`Du har valgt firkant ${placeNumber}. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant 1 til 6`)
+            }
+            if(colorArray.length == 7){
+                alert(`Du har valgt firkant ${placeNumber}. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant 1 til 7`)
+            }
+            if(colorArray.length == 8){
+                alert(`Du har valgt firkant ${placeNumber}. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant 1 til 8`)
+            }
+            if(colorArray.length == 9){
+                alert(`Du har valgt firkant ${placeNumber}. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant 1 til 9`)
+            }
+            
+            }
+               
+        
         //requestAnimationFrame
         const requestAnimationFrame = window.requestAnimationFrame || window.msRequestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame
         function renderCanvas() {
