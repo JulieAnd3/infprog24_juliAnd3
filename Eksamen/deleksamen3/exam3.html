@@ -86,17 +86,15 @@
             changeOneColor()
         })
 
-        function randomColor(){
+        function randomColor(){ //Se dokument linje 89- 129. Laging av tilfeldige fargekoder
             //Den skrur av knappen når arrayen er full
-            if(colorArray.length >= 9){ //Se dokument linje 77. If test for å skru av knapp
+            if(colorArray.length >= 9){ //Se dokument linje 91. If test for å skru av knapp
             addColorbtn.disabled = true
-            console.log("det var nok farger kompis") //vurderer å flytte på den her
             }
 
             //For å finne tilfeldig tall
             ranNumb = Math.floor(Math.random() * ((maxNum - min + 1)+ min))
             
-
             //For å finne tilfeldig tall
             ranNumbLet = Math.floor(Math.random() * ((maxLet - min + 1)+ min))
             //For å finne en tilfeldig bokstav 
@@ -114,7 +112,7 @@
                 ranLet = "f"
             }
 
-             //Tilfeldig plassering av tall og bokstaver som går flere 6 runder 
+             //Tilfeldig plassering av tall og bokstaver som går  6 runder 
             for(let teller = 1; teller <= 6; teller++) {        
                 const randomplace = Math.random()
                 if(randomplace > 0.5){
@@ -147,7 +145,7 @@
             let color10 = false 
 
 
-        function drawRandomColor(){
+        function drawRandomColor(){ //Se dokument linje 148-212. Få verdiene utifra plassering
             //If test for å få rikitg verdier til variabelene 
            if(colorArray.length === 1){
                 indexVar = 0
@@ -211,10 +209,9 @@
                 theColor = colorArray[indexVar]
                 color10 = true 
             }
-
             draw()
         } 
-        function draw(){
+        function draw(){ //Se dokument. Linje 214-241 Tegning av elementene
             //Firkant 
             ctx.beginPath()
             ctx.rect(colorX, 0 , 100, 100) //ha noe på koordinatene så den kan tegne ut bortover
@@ -243,7 +240,7 @@
             ctx.closePath()
         }   
         
-        function clearAll(){
+        function clearAll(){ //Se dokument. Linje 243-250 Tilbakestiller
             colorArray = []
             ctx.clearRect(0, 0, 1000, 100)
             inputThere = false
@@ -251,7 +248,7 @@
             codeLenght = false  
             colorThere = false
         }
-        function tenColors(){
+        function tenColors(){ //Se dokument. Linje 251-258. 10 farger 
             ctx.clearRect(0, 0, 1000, 100)
             colorArray = []
             for(let teller = 1; teller <= 10; teller++){
@@ -271,7 +268,7 @@
         let codeRight = false 
         let codeLenght = false 
         
-        function changeOneColor(){   
+        function changeOneColor(){  //Linje 271- 485. Får brukeren legge til fargekode?
             optionValue = optionTest.value //for hvilken firkant brukeren velger
             userValue = `#${userTest.value}` //for inputen til brukeren 
            
@@ -286,15 +283,12 @@
             let color9Stat = true 
             let color10Stat = true 
             
-            //colorArray.length === 0
             if(optionValue == 0 && color1 === false){
-                //alert("Du har valgt firkant 1. Denne har ikke en farge enda, og kan derfor ikke byttes. Du har ikke lagt til noen farger og kan derfor ikke endre på noen av dem")
                 placeNumber = 1 
                 alertFunc()
                 color1Stat = false
             } 
             if(optionValue == 1 && color2 === false ){
-                //alert(`Du har valgt firkant 2. Denne har ikke en farge enda, og kan derfor ikke byttes. Du kan endre farge på firkant Y til ${colorArray.length}`)
                 placeNumber = 2
                 alertFunc()
                 color2Stat = false 
@@ -397,7 +391,7 @@
 
         let valueLength = userValue.length //variabel for å se på lengden
         console.log(userValue)
-        //se om hvert sted har en av bokstavene og trykk ned en knapp?
+    
         
     
         if(valueLength === 7){ 
@@ -406,18 +400,10 @@
             alert(`«Du har skrevet ${userValue}. Dette er ikke en gyldig fargekode.»`)
         }
  
-
-            console.log(valueLength)     
-            /*console.log("color " + colorThere)
-            console.log("there " + inputThere)*/
-
-        
+       
             if(inputThere === true && codeRight === true && codeLenght === true && colorThere === true){ //Test som ser om alle kravene er fullført. 
                 console.log("tegningen kjører")
                 drawingNewColor()
-                /*inputThere = false
-                console.log("color " + colorThere)
-                console.log("there " + inputThere)*/
             } 
      
             function drawingNewColor(){
