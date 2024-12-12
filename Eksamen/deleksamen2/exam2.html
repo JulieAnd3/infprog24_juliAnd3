@@ -199,11 +199,46 @@ showTime();
 
         console.log(todos)
 
+            
+        let doneStat = todos.filter(todostat => todostat.status === "Done")
+
+        function todoclick(){
+            if(todos[1]){
+                todos.splice(1,1)
+                todos.splice(1,0, {text: "Løs Innføring i programmerings-eksamen", status: "Done"})
+                todos.map(todo => todo[1].innerHTML = 
+            `<li>
+            <span>${todo.text}</span>
+            <button class="task-status task-status-done">${todo.status}</button> 
+            </li> ` )
+           
+            }
+            /*if(todos[2]){
+                todos.map(todo => todo.status = `<button class="task-status task-status-done"> </button>` )
+            }
+            if(todos[3]){
+                todos.map(todo => todo.status = `<button class="task-status task-status-done">  </button>` )
+            }
+            if(todos[4]){
+                todos.map(todo => todo.status = `<button class="task-status task-status-done">  </button>` )
+            }
+            if(todos[5]){
+                todos.map(todo => todo.status = `<button class="task-status task-status-done">  </button>` )
+            }
+            if(todos[6]){
+                todos.map(todo => todo.status = `<button class="task-status task-status-done"> Done</button>` )
+            }
+            if(todos[7]){
+                todos.map(todo => todo.status = `<button class="task-status task-status-done"> Done</button>` )
+            }*/
+
+
+        }
+       
         
-
     //Lage fungerende knapper
-   /*
-
+   
+/*
     let todoStat = todos.filter(todostat => todostat.status === "To do")
     let doneStat = todos.filter(todostat => todostat.status === "Done")
     console.log(todoStat) //Husk å fjerne variabelen etter tester 
@@ -211,16 +246,16 @@ showTime();
 
     function todoclick(){
         console.log("knappen funker!")
-        if(todostat){ //Funker ikke enda 
-            //todos.map(todo => todo.status= "Done")
+        if(todoStat){ 
+            todos.map(todo => todo.status = `<button class="task-status task-status-done"> Done</button>` )
             console.log("if testen funker")
         }
 
-        /*todos.map(todo => todo.status= "Done")
+        todos.map(todo => todo.status= "Done")
         
         
     }
-*/
+        */
   
     
         
