@@ -52,7 +52,7 @@
             {lastname: "Jansson", firstname: "Sigried", office: "B1", mail: "s.jansson@company.com"}
         ]
 
-        //Sortering av etternavn. Se vedlagt dokument for linje: 57
+        //Sortering av etternavn. Se vedlagt dokument for linje: 55
         contacts.sort((a, b) => a.lastname.localeCompare(b.lastname));
        
         let contactlist = ""
@@ -61,7 +61,7 @@
             contactlist += `<article>
                 <p><strong>${contact.lastname}, ${contact.firstname}</strong><br />
                 Kontor: ${contact.office} | E-post: <a href= "mailto:${contact.mail}">${contact.mail}</a></p>
-            </article>` //Se vedlagt dokument for linje: 69
+            </article>` //Se vedlagt dokument for linje: 64
         })
 
         document.getElementById("contactlist").innerHTML = contactlist
@@ -102,7 +102,7 @@
             {text: "Lag funksjonalitet for å sette en eksisterende oppgave til utført ved å endre status", status: "To do"}
         ]
 
-        //Legge til  og sjekke etter brukerinput: Se vedlagt dokument for linje 98-121
+        //Legge til  og sjekke etter brukerinput: Se vedlagt dokument for linje 105-127
         document.getElementById("savetask").addEventListener("click", ifempty)  
         
         function ifempty (){ 
@@ -122,12 +122,12 @@
                 todos.push({text: todovalue, status: "To do"})
                 document.getElementById("todolist").innerHTML += `<li><span>${todovalue}</span>
                     <button class="task-status task-status-todo">${todo}</button> `
-                document.getElementById("task").value = "" //Kilde. Se vedlagt dokument. Linje 101
+                document.getElementById("task").value = "" //Kilde. Se vedlagt dokument. Linje 125
                 }   
         }
 
 
-    //CLOCK. Mer detaljer se dokument linje 111 Kilde:https://www.geeksforgeeks.org/how-to-design-digital-clock-using-javascript/
+    //CLOCK. Mer detaljer se dokument linje 130-162 Kilde:https://www.geeksforgeeks.org/how-to-design-digital-clock-using-javascript/
     // Calling showTime function at every second
     setInterval(showTime, 1000);
 
@@ -162,7 +162,7 @@
 }
 showTime();
 
-        //Utskrift for todos. Se vedlagt dokument for linje 109-120
+        //Utskrift for todos. Se vedlagt dokument for linje 165-176
         todos.filter(todo => todo.status === "Done").map(todo => document.getElementById("todolist").innerHTML += 
         `<li>
             <span>${todo.text}</span>
@@ -180,10 +180,10 @@ showTime();
         const doneBtn = document.getElementsByClassName("task-status-done")
         const todoBtn = document.getElementsByClassName("task-status-todo")
     
-        for (var i = 0; i < todoBtn.length; i++) { //Se vedlagt dokument for kilde linje 182
+        for (var i = 0; i < todoBtn.length; i++) { //Se vedlagt dokument for kilde linje 183
         todoBtn[i].addEventListener('click', todoclick);
         }  
-        for (var i = 0; i < doneBtn.length; i++) { //Se vedlagt dokument for kilde linje 182
+        for (var i = 0; i < doneBtn.length; i++) { 
         doneBtn[i].addEventListener('click', doneclick);
         }  
         
@@ -201,38 +201,20 @@ showTime();
 
             
         let doneStat = todos.filter(todostat => todostat.status === "Done")
+        const todoList = document.getElementById("todolist")
 
-        function todoclick(){
+        function todoclick(){ //Se dokument for linje 205
             if(todos[1]){
                 todos.splice(1,1)
                 todos.splice(1,0, {text: "Løs Innføring i programmerings-eksamen", status: "Done"})
-                todos.map(todo => todo[1].innerHTML = 
-            `<li>
-            <span>${todo.text}</span>
-            <button class="task-status task-status-done">${todo.status}</button> 
-            </li> ` )
-           
+            
             }
-            /*if(todos[2]){
-                todos.map(todo => todo.status = `<button class="task-status task-status-done"> </button>` )
+          if(todos[2]){
+                todos[2].status = "Done" 
             }
             if(todos[3]){
-                todos.map(todo => todo.status = `<button class="task-status task-status-done">  </button>` )
+               todos[3].status = "Done"
             }
-            if(todos[4]){
-                todos.map(todo => todo.status = `<button class="task-status task-status-done">  </button>` )
-            }
-            if(todos[5]){
-                todos.map(todo => todo.status = `<button class="task-status task-status-done">  </button>` )
-            }
-            if(todos[6]){
-                todos.map(todo => todo.status = `<button class="task-status task-status-done"> Done</button>` )
-            }
-            if(todos[7]){
-                todos.map(todo => todo.status = `<button class="task-status task-status-done"> Done</button>` )
-            }*/
-
-
         }
        
         
